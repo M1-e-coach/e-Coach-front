@@ -45,6 +45,7 @@ import {
   MatStepperModule,
   MatPaginatorIntl,
 } from '@angular/material';
+import { CoachListitemComponent } from './pages/coach-listitem/coach-listitem.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import {
     SignUpComponent,
     UserComponent,
     SiteHeaderComponent,
-    SiteFooterComponent
+    SiteFooterComponent,
+    CoachListitemComponent
   ],
   imports: [
     BrowserModule,
@@ -94,7 +96,8 @@ import {
       { path: '', component: HomeComponent, pathMatch: 'full'},
       { path: 'user', component: UserComponent, pathMatch: 'full'},
       { path: 'login', component: LoginComponent, pathMatch: 'full'},
-      { path: 'sign-up', component: SignUpComponent, pathMatch: 'full'}
+      { path: 'sign-up', component: SignUpComponent, pathMatch: 'full'},
+      { path: 'coach-listitem', component: CoachListitemComponent, pathMatch: 'full'}
     ])
   ],
   providers: [],

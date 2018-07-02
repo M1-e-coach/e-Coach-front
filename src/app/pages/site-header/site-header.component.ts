@@ -1,8 +1,8 @@
-import { Component, OnInit, ViewEncapsulation, PLATFORM_ID, Inject, Injectable } from '@angular/core';
-import { isPlatformBrowser, isPlatformServer } from '@angular/common';
+import {Component, OnInit, ViewEncapsulation, PLATFORM_ID, Inject, Injectable} from '@angular/core';
+import {isPlatformBrowser, isPlatformServer} from '@angular/common';
 
 import * as $ from 'jquery';
-import { Router } from '@angular/router';
+import {Router} from '@angular/router';
 import {ErrorStateMatcher} from '@angular/material/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 
@@ -33,8 +33,10 @@ export class SiteHeaderComponent implements OnInit {
     Validators.email,
   ]);
   matcher = new MyErrorStateMatcher();
+
   constructor(@Inject(PLATFORM_ID) private platformId: Object, private route: Router) {
   }
+
   username = '';
   password = '';
   email = '';
@@ -48,11 +50,11 @@ export class SiteHeaderComponent implements OnInit {
           $('.header').removeClass('scrolled');
         }
       });
-      $('.ion-ios-navicon').on('click', function() {
+      $('.ion-ios-navicon').on('click', function () {
         $('.sidebar').addClass('active');
         $('.sidebar-overlay').addClass('fadeIn');
       });
-      $('.sidebar-overlay').on('click', function() {
+      $('.sidebar-overlay').on('click', function () {
         $('.sidebar-overlay').removeClass('fadeIn');
         $('.sidebar-overlay').addClass('fadeOut');
         $('.sidebar').removeClass('active');
@@ -70,6 +72,7 @@ export class SiteHeaderComponent implements OnInit {
         console.log('selected !!!', this.selection);
     */
   }
+
   navigateToUser() {
     this.route.navigate(['app-user-page']);
     // this.route.navigate(['item-details', stoId]);
