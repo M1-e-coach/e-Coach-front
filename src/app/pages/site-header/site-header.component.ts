@@ -24,7 +24,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class SiteHeaderComponent implements OnInit {
   /* Game Coach */
   selected = 'option2';
-  
+  siteName = "e-Coach";
   selection: String = 'home';
   menuOpen = false;
   isConnected = false;
