@@ -1,0 +1,187 @@
+app-site-header{
+    .header{
+      .user-head{color: #fff;font-size: 24px;cursor: pointer;transition: all linear .2s;}
+      [mat-icon-button]{color: #fff;font-size: 24px;}
+      &.scrolled{
+        box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+        .user-head button{color: #333;}
+      }
+    }
+    button:hover{color: initial !important;}
+    .ion-ios-navicon{
+      transition: all linear .2s;
+      i{
+        transition: all linear .2s;
+        height: 1px;
+        width: 20px;
+        margin-top: 5px;
+        background: #fff;
+        position: relative;
+        display: inline-block;
+        &:after{
+          transition: all linear .2s;
+          content: '';
+          width: inherit;
+          height: inherit;
+          position: absolute;
+          background: #fff;
+          bottom: 6px;
+        }
+        &:before{
+          transition: all linear .2s;
+          content: '';
+          width: inherit;
+          height: inherit;
+          position: absolute;
+          background: #fff;
+          bottom: 12px;
+        }
+      }
+    }
+    .header.scrolled{
+      .ion-ios-navicon {
+        margin-top: 0;
+        i, i:before, i:after{
+          transition: all linear .2s;
+          background: #000;
+        }
+      }
+    }
+    .sidebar .sidebar-content,
+    .sidebar .sidebar-overlay {
+      top: 0;
+      left: 0;
+      bottom: 0;
+      position: absolute;
+      transition: all .3s ease-in-out 0s
+    }
+    .sidebar .sidebar-overlay {
+      right: 0;
+      opacity: 0;
+      width: 100%;
+      z-index: 999;
+      transform: scale(0);
+      background: rgba(0, 0, 0, .4);
+      height: 100vh;
+    }
+  
+    .sidebar .sidebar-content {
+      // width: 80%;
+      width: 260px;
+      color: #333;
+      padding: 15px;
+      z-index: 9999;
+      background: #fff;
+      transform: translateX(-100%);
+      height: 100vh;
+    }
+  
+    .sidebar.active .sidebar-content {
+      transform: translateX(0)
+    }
+  
+    .sidebar.active .sidebar-overlay {
+      opacity: 1;
+      transform: scale(1)
+    }
+  
+    .sidebar .sidebar-content .top-head .name {
+      font-size: 24px;
+      font-weight: 400;
+      margin-bottom: 5px;
+      line-height: 26px;
+    }
+  
+    .sidebar .sidebar-content .top-head .email {
+      font-size: 13px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #0091ea;
+      margin-bottom: 35px
+    }
+  
+    .sidebar .sidebar-content .nav-left>a {
+      color: #333;
+      display: block;
+      font-size: 16px;
+      padding: 10px 0;
+      line-height: 24px;
+      vertical-align: top;
+      text-decoration: none
+    }
+  
+    .sidebar .sidebar-content .nav-left>a>span {
+      color: #aaa;
+      font-size: 24px;
+      min-width: 40px;
+      display: inline-block
+    }
+  
+    @media screen and (max-width: 768px){
+      .header{
+        //padding-top: 8px !important;
+        padding-bottom: 8px;
+      }
+    }
+    .mat-menu-item .mat-icon{
+      color: #0091ea !important;
+    }
+    /* header */
+  .header{
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    margin: 0;
+    width: 100%;
+    background-color: #333;
+    padding: 0;
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+    -webkit-animation-duration: .5s;
+    animation-duration: .5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    will-change: transform,opacity;
+    .select {
+      color: #fff;
+    }
+    .cliquable {
+      outline: none;
+      text-align: center;
+    }
+    .buttn {
+      padding: 0 16px;
+      a {
+        color: #fff;
+        transition: all linear 0.1s;
+        text-decoration: none !important;
+        &:hover{
+          color: #0091ea;
+        }
+      }
+    }
+    .h-link{
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+  }
+  .logo{color: #fff;font-size: 22px;font-weight: 600;
+    &::first-letter{
+      
+    }
+  }
+  mat-form-field-wrapper{
+    padding: 0;
+  }
+  .header-select{
+    .mat-select-arrow, .mat-form-field-label, .mat-select-value{
+      color: #fff;
+    }
+    .mat-form-field-underline{
+      background: #fff;
+    }
+  }
+  .become-catch{background-color: #ff9900;}
+  .menu-bar{cursor: pointer;}
+}
+  

@@ -1,0 +1,182 @@
+<div class="header">
+    <div class="container p-0">
+      <div class="row">
+        <!--<div class="col-auto menu-bar d-lg-none">
+          <div class="row h-100 align-items-center">
+            <span class="col-auto align-self-center ion-ios-navicon pull-left"><i></i></span>
+          </div>
+        </div>-->
+        <div id="logo" class="col-3 col-md-2">
+          <div class="row h-100 align-items-center">
+            <div class="col logo">
+                e-Coach
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+          <div class="row h-100 align-items-center">
+              <mat-form-field class="header-select">
+                  <mat-select placeholder="Sélectionnez un jeu">
+                    <mat-option value="option1">Overwatch</mat-option>
+                    <mat-option value="option2">Counter Strike Go</mat-option>
+                    <mat-option value="option3">Fortnite</mat-option>
+                  </mat-select>
+                </mat-form-field>
+          </div>
+        </div>
+        <div class="col user-head d-none d-lg-block">
+          <div class="row h-100 justify-content-end align-items-center">
+            <div *ngIf="!isConnected" class="col-auto px-1 h-100" data-toggle="modal" data-target="#modalCon">
+              <div class="row m-0 h-100 align-items-center">
+                <div class="btn px-2">Se connecter</div>
+              </div>
+            </div>
+            <div *ngIf="!isConnected" class="col-auto px-1 h-100">
+                <div class="row m-0 h-100 align-items-center">
+                  <div class="btn px-2" data-toggle="modal" data-target="#modalInsc">S'inscrire</div>
+                </div>
+            </div>
+            <div *ngIf="!isConnected" class="col-auto px-2 h-100">
+                <div class="row m-0 h-100 align-items-center">
+                  <div class="btn become-catch">Devenir un coach</div>
+                </div>
+            </div>
+            <div *ngIf="isConnected" class="col-auto">
+              <div class=""></div>
+            </div>
+          </div>
+        </div>
+        <!--<div class="col user-head d-none d-lg-block">
+            <div class="row justify-content-end h-100">
+              <button mat-icon-button [matMenuTriggerFor]="menu" class="col-auto cliquable align-self-center">
+                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+              </button>
+              <mat-menu #menu="matMenu">
+                <a *ngIf="isConnected" mat-menu-item [routerLink]="'/user'">
+                  <mat-icon>face</mat-icon>
+                  <span>Mon compte</span>
+                </a>
+                <a *ngIf="!isConnected" mat-menu-item [routerLink]="'/user'">
+                  <mat-icon>face</mat-icon>
+                  <span>Se connecter</span>
+                </a>
+                <a *ngIf="!isConnected" mat-menu-item data-toggle="modal" data-target="#modalInsc">
+                  <mat-icon>face</mat-icon>
+                  <span>S'inscrire</span>
+                </a>
+                <button *ngIf="isConnected" mat-menu-item>
+                  <mat-icon>shopping_cart</mat-icon>
+                  <span>Mes réservations</span>
+                </button>
+                <button *ngIf="isConnected" mat-menu-item>
+                  <mat-icon>clear</mat-icon>
+                  <span>Déconnexion</span>
+                </button>
+              </mat-menu>
+            </div>
+        </div>
+      </div>-->
+      <div class="row m-0 d-lg-none">
+        <div class="sidebar">
+          <div class="sidebar-overlay"></div>
+          <div class="sidebar-content">
+            <div class="top-head">
+              <div class="name">{{username}}</div>
+              <div class="email">{{email}}</div>
+            </div>
+            <div class="nav-left">
+              <button mat-menu-item [routerLink]="['/']"><mat-icon>home</mat-icon> Accueil</button>
+              <button mat-menu-item [routerLink]="'/'" ><mat-icon>list</mat-icon> Liste des coachs</button>
+              <button mat-menu-item><mat-icon>email</mat-icon> Contact</button>
+            </div>
+          </div>
+        </div>
+        <div class="col user-head">
+          <div class="row justify-content-end h-100">
+            <button mat-icon-button [matMenuTriggerFor]="menu" class="col-auto cliquable align-self-center">
+              <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+            </button>
+            <mat-menu #menu="matMenu">
+              <a *ngIf="isConnected" mat-menu-item [routerLink]="'/user'">
+                <mat-icon>face</mat-icon>
+                <span>Mon compte</span>
+              </a>
+              <a *ngIf="!isConnected" mat-menu-item [routerLink]="'/user'">
+                <mat-icon>face</mat-icon>
+                <span>Se connecter</span>
+              </a>
+              <a *ngIf="!isConnected" mat-menu-item data-toggle="modal" data-target="#modalInsc">
+                <mat-icon>face</mat-icon>
+                <span>S'inscrire</span>
+              </a>
+              <button *ngIf="isConnected" mat-menu-item>
+                <mat-icon>shopping_cart</mat-icon>
+                <span>Mes réservations</span>
+              </button>
+              <button *ngIf="isConnected" mat-menu-item>
+                <mat-icon>clear</mat-icon>
+                <span>Déconnexion</span>
+              </button>
+            </mat-menu>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal Inscription -->
+  <div class="modal fade" id="modalInsc" tabindex="-1" role="dialog" aria-labelledby="modalInsc" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Inscription</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="inscription-form">
+            <mat-form-field class="example-full-width col-12">
+              <input matInput placeholder="email" [value]="email" name="email">
+            </mat-form-field>
+            <mat-form-field class="example-full-width col-12">
+              <input matInput placeholder="Nom d'utilisateur" value="" name="username" >
+            </mat-form-field>
+            <mat-form-field class="example-full-width col-12">
+              <input matInput placeholder="mot de passe" value="" name="password" type="password">
+            </mat-form-field>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="inscription()">S'inscrire</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal connexion -->
+  <div class="modal fade" id="modalCon" tabindex="-1" role="dialog" aria-labelledby="modalCon" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Connexion</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="inscription-form">
+            <mat-form-field class="example-full-width col-12">
+              <input matInput placeholder="email" value="">
+            </mat-form-field>
+            <mat-form-field class="example-full-width col-12">
+              <input matInput placeholder="mot de passe" value="" type="password">
+            </mat-form-field>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="connexion()">Se connecter</button>
+        </div>
+      </div>
+    </div>
+  </div>

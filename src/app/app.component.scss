@@ -1,0 +1,33 @@
+
+/*
+* Fonts import */
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+/* general */
+html, body{
+    overflow-x: hidden;
+}
+
+.fa-2x {
+font-size: 2em;
+}
+.fa {
+display: inline-block;
+font: normal normal normal 14px/1 FontAwesome;
+font-size: inherit;
+text-rendering: auto;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+}
+.cliquable {
+outline:none;
+text-align: center;
+}
+div, h1, h2, h3, p, span {
+font-family: 'Montserrat', sans-serif;
+font-weight: 400;
+}
+
+.color-w{
+color: #fff;}
+  
