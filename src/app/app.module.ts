@@ -104,12 +104,12 @@ import { EventDialogComponent } from './pages/event-dialog/event-dialog.componen
     MatToolbarModule,
     MatTooltipModule,
     RouterModule.forRoot([
-      {path: '', component: HomeComponent, pathMatch: 'full'},
-      {path: 'user', component: UserComponent, pathMatch: 'full'},
-      {path: 'login', component: LoginComponent, pathMatch: 'full'},
-      {path: 'sign-up', component: SignUpComponent, pathMatch: 'full'},
-      {path: 'coach-listitem', component: CoachListitemComponent, pathMatch: 'full'},
       {path: 'coach-profile', component: CoachProfileComponent, pathMatch: 'full'}
+      {path: 'sign-up', component: SignUpComponent, pathMatch: 'full'},
+      {path: 'login', component: LoginComponent, pathMatch: 'full'},
+      {path: 'user', component: UserComponent, pathMatch: 'full'},
+      {path: '', component: HomeComponent, pathMatch: 'full'},
+      { path: 'coach-listitem/:id', component: CoachListitemComponent, pathMatch: 'full'}
     ])
   ],
   providers: [],

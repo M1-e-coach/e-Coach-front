@@ -8,7 +8,7 @@
         </div>-->
         <div id="logo" class="col-3 col-md-2">
           <div class="row h-100 align-items-center">
-            <div class="col logo">
+            <div class="col logo cliquable" routerLink="/">
                 {{siteName}}
             </div>
           </div>
@@ -17,9 +17,9 @@
           <div class="row h-100 align-items-center">
               <mat-form-field class="header-select">
                   <mat-select placeholder="Sélectionnez un jeu">
-                    <mat-option value="option1">Overwatch</mat-option>
-                    <mat-option value="option2">Counter Strike Go</mat-option>
-                    <mat-option value="option3">Fortnite</mat-option>
+                    <mat-option routerLink="coach-listitem/Overwatch" value="option1">Overwatch</mat-option>
+                    <mat-option routerLink="coach-listitem/CSGo" value="option2">Counter Strike Go</mat-option>
+                    <mat-option routerLink="coach-listitem/Fortnite" value="option3">Fortnite</mat-option>
                   </mat-select>
               </mat-form-field>
           </div>

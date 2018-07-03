@@ -22,7 +22,8 @@ html, body {
 }
 
 .cliquable {
-  outline: none;
+    cursor: pointer;    
+  outline: none !important;
   text-align: center;
 }
 
