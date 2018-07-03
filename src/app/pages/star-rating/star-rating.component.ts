@@ -12,12 +12,10 @@ export class StarRatingComponent implements OnInit {
   stars = [];
   emptyStar = [];
 
-  constructor() {
-
-  }
+  constructor() {}
 
   ngOnInit() {
-    this.halfStar = this.rating % 2;
+    this.halfStar = Number(this.rating) % 2;
     this.nbStar = Math.floor(Number(this.rating));
     this.stars = Array(this.nbStar).fill('0').map((x, i) => i);
     if (this.halfStar !== 0 && this.halfStar !== 1) {

@@ -1,0 +1,38 @@
+app-home{
+    #carouselHome{
+        .carousel-item{
+            height: 300px;
+        }
+    }
+    .search-home{
+        position: absolute;
+        padding: 10px 25px 10px 25px;
+        z-index: 1000;
+        top: 110px;
+        background: rgba(255,255,255,0.3);
+    }
+    .mat-form-field{
+        background-color: #fff !important;
+        padding: 0 10px !important;
+    }
+    .mat-form-field-wrapper{
+        padding: 0 !important;
+       
+    }
+    .mat-form-field-underline{
+        bottom: 3px !important;
+    }
+    .btn-rechercher{
+        background: #f90;
+        color:#fff;
+        line-height: 32px;
+        text-transform: uppercase;
+        padding-left: 20px;
+        i{
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+}

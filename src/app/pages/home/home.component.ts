@@ -1,4 +1,7 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+declare var jquery:any;
+declare var $ :any;
+
 
 @Component({
   selector: 'app-home',
@@ -12,6 +15,9 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    $('.carousel').carousel({
+      interval: 2000
+    })
   }
 
 }
