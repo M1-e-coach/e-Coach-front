@@ -99,7 +99,7 @@ import { StarRatingComponent } from './pages/star-rating/star-rating.component';
       { path: 'user', component: UserComponent, pathMatch: 'full'},
       { path: 'login', component: LoginComponent, pathMatch: 'full'},
       { path: 'sign-up', component: SignUpComponent, pathMatch: 'full'},
-      { path: 'coach-listitem', component: CoachListitemComponent, pathMatch: 'full'}
+      { path: 'coach-listitem/:id', component: CoachListitemComponent, pathMatch: 'full'}
     ])
   ],
   providers: [],
