@@ -1,5 +1,5 @@
-import { Component, NgModule, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {Component, NgModule, OnInit} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -12,18 +12,19 @@ export class AppComponent implements OnInit {
 
   projects = [];
 
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient) {
+  }
 
   ngOnInit(): void {
     this.http.get('http://localhost:4200').subscribe(data => {
-      for(let key in data){
-        if(data.hasOwnProperty(key)){
+      for (let key in data) {
+        if (data.hasOwnProperty(key)) {
           this.projects.push(data[key]);
         }
       }
 
       console.log(this.projects);
-    })
+    });
   }
 
 }

@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="row coach-profile-infos">
-    <div class="col-3 coach-profile-profilepic">
+  <div class="row coach-profile-infos justify-content-center">
+    <div class="col-4 coach-profile-profilepic">
       <img src="https://material.angular.io/assets/img/examples/shiba2.jpg">
     </div>
     <div class="col-4 coach-profile-infocoach">
@@ -14,9 +14,9 @@
         <li>Autres : des autres infos</li>
       </ul>
     </div>
-    <div class="col-5 coach-profile-calendar">
-      <div></div>
-    </div>
+    <!--<div class="col-5 coach-profile-calendar">-->
+      <!--<angular2-fullcalendar id="calandarMini" [options]="calendarOptionsMini"></angular2-fullcalendar>-->
+    <!--</div>-->
   </div>
   <div class="row">
     <div class="col-12 coach-profile-content">
@@ -62,7 +62,6 @@
         </div>
       </div>
     </div>
-
   </div>
   <div class="row coach-profile-program">
     <div class="col-4">
@@ -88,6 +87,13 @@
         </ul>
         <button class="coach-profile-programbox-footer">Reserver le programme</button>
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <angular2-fullcalendar
+        id="calandar"
+        [options]="calendarOptions"></angular2-fullcalendar>
     </div>
   </div>
 </div>
