@@ -1,0 +1,115 @@
+@import "./../../../assets/scss/variables";
+
+.coach-profile-infos {
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.coach-profile-profilepic {
+  img {
+    max-width: 100%;
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
+  }
+}
+
+.coach-profile-starrating {
+  vertical-align: sub;
+}
+
+.coach-profile-infocoach {
+  padding: 15px;
+  span {
+    margin-left: 15px;
+    background-color: $primary;
+    padding: 2px 10px;
+    border-radius: 5px;
+    color: white;
+  }
+  li {
+    list-style: none;
+  }
+}
+
+.coach-profile-calendar {
+  padding: 15px;
+  div {
+    background-color: blue;
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
+    min-height: 100%;
+  }
+}
+
+.coach-profile-content {
+  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
+  background-color: #333;
+  .coach-profile-content-desc {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    padding: 35px 15px 35px 50px;
+    color: #fafafa;
+  }
+}
+
+.coach-profile-avis {
+  padding: 0 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  right: 0;
+  position: absolute;
+  width: 300px;
+  height: 90%;
+  overflow-y: scroll;
+  li {
+    padding: 5px;
+    list-style: none;
+    border-bottom: solid 1px #fafafa;
+    &:last-child{
+      border-bottom: 0
+    }
+  }
+  p{
+    margin: 0;
+    color: #fafafa;
+  }
+}
+.coach-profile-avis-comment{
+  font-style: italic;
+  color: #e0e0e0;
+  font-size: 13px;
+  &:before{
+    content: open-quote;
+    padding-right: 2px;
+  }
+  &:after{
+    content: close-quote;
+    padding-left: 2px;
+  }
+}
+
+.coach-profile-program {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.coach-profile-programbox {
+  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.75);
+  text-align: center;
+  .coach-profile-programbox-header, .coach-profile-programbox-footer {
+    padding: 15px 35px;
+    width: 100%;
+    background-color: #333;
+    border: 0;
+    color: #fafafa;
+  }
+
+  .coach-profile-programbox-sections {
+    padding: 35px 50px;
+    li {
+      padding: 5px;
+      list-style: none;
+    }
+  }
+}
