@@ -47,6 +47,7 @@ import {
 } from '@angular/material';
 import { CoachListitemComponent } from './pages/coach-listitem/coach-listitem.component';
 import { StarRatingComponent } from './pages/star-rating/star-rating.component';
+import { CoachProfileComponent } from './pages/coach-profile/coach-profile.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { StarRatingComponent } from './pages/star-rating/star-rating.component';
     SiteHeaderComponent,
     SiteFooterComponent,
     CoachListitemComponent,
-    StarRatingComponent
+    StarRatingComponent,
+    CoachProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -99,7 +101,8 @@ import { StarRatingComponent } from './pages/star-rating/star-rating.component';
       { path: 'user', component: UserComponent, pathMatch: 'full'},
       { path: 'login', component: LoginComponent, pathMatch: 'full'},
       { path: 'sign-up', component: SignUpComponent, pathMatch: 'full'},
-      { path: 'coach-listitem', component: CoachListitemComponent, pathMatch: 'full'}
+      { path: 'coach-listitem', component: CoachListitemComponent, pathMatch: 'full'},
+      { path: 'coach-profile', component: CoachProfileComponent, pathMatch: 'full'}
     ])
   ],
   providers: [],
