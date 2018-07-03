@@ -8,8 +8,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class SiteFooterComponent implements OnInit {
   siteName = "e-Coach";
-  constructor() { }
-
+  constructor() {}
   ngOnInit() {
   }
 
