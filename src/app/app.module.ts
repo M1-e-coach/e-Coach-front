@@ -46,6 +46,7 @@ import {
   MatPaginatorIntl,
 } from '@angular/material';
 import { CoachListitemComponent } from './pages/coach-listitem/coach-listitem.component';
+import { StarRatingComponent } from './pages/star-rating/star-rating.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { CoachListitemComponent } from './pages/coach-listitem/coach-listitem.co
     UserComponent,
     SiteHeaderComponent,
     SiteFooterComponent,
-    CoachListitemComponent
+    CoachListitemComponent,
+    StarRatingComponent
   ],
   imports: [
     BrowserModule,
