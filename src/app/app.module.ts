@@ -1,10 +1,14 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
-import {CalendarComponent} from 'ap-angular2-fullcalendar/src/calendar/calendar';
+import {CalendarModule} from 'angular-calendar';
 
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
 
-import 'fullcalendar/dist/locale/fr.js';
+// the second parameter 'fr' is optional
+registerLocaleData(localeFr, 'fr');
+
 import {AppComponent} from './app.component';
 import {HomeComponent} from './pages/home/home.component';
 import {LoginComponent} from './pages/login/login.component';
@@ -51,8 +55,7 @@ import {
 } from '@angular/material';
 import {CoachListitemComponent} from './pages/coach-listitem/coach-listitem.component';
 import {StarRatingComponent} from './pages/star-rating/star-rating.component';
-import {CoachProfileComponent} from './pages/coach-profile/coach-profile.component';
-import { EventDialogComponent } from './pages/event-dialog/event-dialog.component';
+import {CoachProfileComponent} from './pages/coach-profile/coach-profile.component';$
 
 @NgModule({
   declarations: [
@@ -65,9 +68,7 @@ import { EventDialogComponent } from './pages/event-dialog/event-dialog.componen
     SiteFooterComponent,
     CoachListitemComponent,
     StarRatingComponent,
-    CoachProfileComponent,
-    CalendarComponent,
-    EventDialogComponent
+    CoachProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -103,13 +104,14 @@ import { EventDialogComponent } from './pages/event-dialog/event-dialog.componen
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
+    CalendarModule.forRoot(),
     RouterModule.forRoot([
-      {path: 'coach-profile', component: CoachProfileComponent, pathMatch: 'full'}
+      {path: 'coach-profile', component: CoachProfileComponent, pathMatch: 'full'},
       {path: 'sign-up', component: SignUpComponent, pathMatch: 'full'},
       {path: 'login', component: LoginComponent, pathMatch: 'full'},
       {path: 'user', component: UserComponent, pathMatch: 'full'},
       {path: '', component: HomeComponent, pathMatch: 'full'},
-      { path: 'coach-listitem/:id', component: CoachListitemComponent, pathMatch: 'full'}
+      {path: 'coach-listitem/:id', component: CoachListitemComponent, pathMatch: 'full'}
     ])
   ],
   providers: [],

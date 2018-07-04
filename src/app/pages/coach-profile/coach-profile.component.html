@@ -15,7 +15,7 @@
       </ul>
     </div>
     <!--<div class="col-5 coach-profile-calendar">-->
-      <!--<angular2-fullcalendar id="calandarMini" [options]="calendarOptionsMini"></angular2-fullcalendar>-->
+    <!--<angular2-fullcalendar id="calandarMini" [options]="calendarOptionsMini"></angular2-fullcalendar>-->
     <!--</div>-->
   </div>
   <div class="row">
@@ -91,9 +91,13 @@
   </div>
   <div class="row">
     <div class="col-12">
-      <angular2-fullcalendar
-        id="calandar"
-        [options]="calendarOptions"></angular2-fullcalendar>
+      <mwl-calendar-week-view
+        [viewDate]="viewDate"
+        [events]="events"
+        [locale]="locale"
+        [refresh]="refresh"
+        (eventClicked)="handleEvent('Clicked', $event.event)">
+      </mwl-calendar-week-view>
     </div>
   </div>
 </div>
