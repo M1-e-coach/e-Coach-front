@@ -42,24 +42,7 @@ export class SiteHeaderComponent implements OnInit {
   email = '';
 
   ngOnInit() {
-    if (isPlatformBrowser(this.platformId)) {
-      $(window).on('scroll touchmove', function () {
-        if ($(window).scrollTop() >= 1) {
-          $('.header').addClass('scrolled');
-        } else {
-          $('.header').removeClass('scrolled');
-        }
-      });
-      $('.ion-ios-navicon').on('click', function () {
-        $('.sidebar').addClass('active');
-        $('.sidebar-overlay').addClass('fadeIn');
-      });
-      $('.sidebar-overlay').on('click', function () {
-        $('.sidebar-overlay').removeClass('fadeIn');
-        $('.sidebar-overlay').addClass('fadeOut');
-        $('.sidebar').removeClass('active');
-      });
-    }
+    if (isPlatformBrowser(this.platformId)) {}
   }
 
   select(item) {
@@ -78,6 +61,9 @@ export class SiteHeaderComponent implements OnInit {
     // this.route.navigate(['item-details', stoId]);
   }
 
+  connexion(){
+    this.isConnected = true;
+  }
   inscription() {
     /*this.variables.setName(this.username);
     this.variables.setPassword(this.password);
