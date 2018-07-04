@@ -111,11 +111,9 @@ import {CoachProfileComponent} from './pages/coach-profile/coach-profile.compone
       {path: 'login', component: LoginComponent, pathMatch: 'full'},
       {path: 'user', component: UserComponent, pathMatch: 'full'},
       {path: '', component: HomeComponent, pathMatch: 'full'},
-      {path: 'coach-listitem/:id', component: CoachListitemComponent, pathMatch: 'full'}
+      {path: 'coach-listitem/:id', component: CoachListitemComponent, pathMatch: 'full'},
+      {path: 'coach-listitem', component: CoachListitemComponent, pathMatch: 'full'},
     ])
-  ],
-  entryComponents: [
-    EventDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

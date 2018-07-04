@@ -23,40 +23,7 @@ import {CustomDateFormatter} from './../../services/custom-date-formatter.provid
   ]
 })
 export class CoachProfileComponent implements OnInit {
-<<<<<<< HEAD
-  constructor(public dialog: MatDialog) {
-  }
-  ngOnInit() {
-  }
-  calendarOptions: Object = {
-    lang: 'fr',
-    height: 600,
-    defaultView: 'agendaWeek',
-    fixedWeekCount: false,
-    scrollTime: '16:00:00',
-    allDaySlot: false,
-    events: [{
-      title: 'Meeting',
-      start: '2018-07-03T16:00:00',
-      end: '2018-07-03T18:00:00'
-    }],
-    eventClick: this.openDialog
-  };
 
-  openDialog(): void {
-    const dialogRef = this.dialog.open(EventDialogComponent, {
-      width: '250px',
-      data: {}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-     
-    });
-  }
-
-  
-=======
   viewDate: Date = new Date();
   events: CalendarEvent[] = [
     {
@@ -82,5 +49,4 @@ export class CoachProfileComponent implements OnInit {
 
   ngOnInit() {
   }
->>>>>>> 92f50d422dab96d0fc312bc37a7171d4abfc05a2
 }
