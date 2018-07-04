@@ -42,7 +42,9 @@
                 </div>
             </div>
             <div *ngIf="isConnected" class="col-auto">
-              <div class=""></div>
+                <div class="row m-0 h-100 align-items-center">
+                    <div routerLink="/user" class="btn px-2">Profil</div>
+                </div>
             </div>
           </div>
         </div>
@@ -86,7 +88,7 @@
             </div>
             <div class="nav-left">
               <button mat-menu-item routerLink="/"><mat-icon>home</mat-icon> Accueil</button>
-              <button mat-menu-item routerLink="/user" ><mat-icon>list</mat-icon> Liste des coachs</button>
+              <button mat-menu-item routerLink="/" ><mat-icon>list</mat-icon> Liste des coachs</button>
               <button mat-menu-item><mat-icon>email</mat-icon> Contact</button>
             </div>
           </div>

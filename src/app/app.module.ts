@@ -104,13 +104,16 @@ import { EventDialogComponent } from './pages/event-dialog/event-dialog.componen
     MatToolbarModule,
     MatTooltipModule,
     RouterModule.forRoot([
-      {path: 'coach-profile', component: CoachProfileComponent, pathMatch: 'full'}
+      {path: 'coach-profile', component: CoachProfileComponent, pathMatch: 'full'},
       {path: 'sign-up', component: SignUpComponent, pathMatch: 'full'},
       {path: 'login', component: LoginComponent, pathMatch: 'full'},
       {path: 'user', component: UserComponent, pathMatch: 'full'},
       {path: '', component: HomeComponent, pathMatch: 'full'},
       { path: 'coach-listitem/:id', component: CoachListitemComponent, pathMatch: 'full'}
     ])
+  ],
+  entryComponents: [
+    EventDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -14,6 +14,10 @@ export interface DialogData {
   styleUrls: ['./coach-profile.component.scss']
 })
 export class CoachProfileComponent implements OnInit {
+  constructor(public dialog: MatDialog) {
+  }
+  ngOnInit() {
+  }
   calendarOptions: Object = {
     lang: 'fr',
     height: 600,
@@ -32,20 +36,16 @@ export class CoachProfileComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(EventDialogComponent, {
       width: '250px',
-      data: {name: this.name, animal: this.animal}
+      data: {}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.animal = result;
+     
     });
   }
 
-  constructor(public dialog: MatDialog) {
-  }
-
-  ngOnInit() {
-  }
+  
 }
 
 @Component({
