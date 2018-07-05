@@ -25,8 +25,6 @@ export class ApiService {
 
   postLogin(user) {
     console.log(user);
-    return this.http.post(`${this.baseUrl}/login`, user).subscribe(data => {
-      console.log(data);
-    });
+    return this.http.post(`${this.baseUrl}/login`, user);
   }
 }

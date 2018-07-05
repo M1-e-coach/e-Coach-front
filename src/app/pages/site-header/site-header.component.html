@@ -43,7 +43,7 @@
           </div>
           <div *ngIf="isConnected" class="col-auto">
             <div class="row m-0 h-100 align-items-center">
-              <div routerLink="/user" class="btn px-2">Profil</div>
+              <div routerLink="/user" class="btn px-2">Mon profil : {{connectedUser.username}}</div>
             </div>
           </div>
         </div>
@@ -167,7 +167,7 @@
       </div>
       <div class="modal-footer rounded-0">
         <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>-->
-        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="inscription()">S'inscrire</button>
+        <button type="button" class="btn btn-primary" (click)="inscription()">S'inscrire</button>
       </div>
     </div>
   </div>
@@ -183,20 +183,23 @@
         </button>
       </div>
       <div class="modal-body">
+        <div *ngIf="connError" class="alert alert-danger" role="alert">
+          Email ou mot de passe invalide
+        </div>
         <input matInput type="email" placeholder="Email" [(ngModel)]="email"/>
         <input matInput type="password" placeholder="Mot de passe" [(ngModel)]="password"/>
         <!--<form class="inscription-form">-->
-          <!--<mat-form-field class="example-full-width col-12">-->
-            <!--<input matInput placeholder="Email" value="">-->
-          <!--</mat-form-field>-->
-          <!--<mat-form-field class="example-full-width col-12">-->
-            <!--<input matInput placeholder="Mot de passe" value="" type="password">-->
-          <!--</mat-form-field>-->
+        <!--<mat-form-field class="example-full-width col-12">-->
+        <!--<input matInput placeholder="Email" value="">-->
+        <!--</mat-form-field>-->
+        <!--<mat-form-field class="example-full-width col-12">-->
+        <!--<input matInput placeholder="Mot de passe" value="" type="password">-->
+        <!--</mat-form-field>-->
         <!--</form>-->
       </div>
       <div class="modal-footer rounded-0">
         <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>-->
-        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="connexion()">Se connecter</button>
+        <button type="button" class="btn btn-primary" (click)="connexion()">Se connecter</button>
       </div>
     </div>
   </div>
