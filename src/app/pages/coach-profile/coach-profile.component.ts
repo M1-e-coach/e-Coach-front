@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, ViewEncapsulation} from '@angular/core';
 import {
   CalendarEvent,
   DAYS_OF_WEEK,
@@ -6,11 +6,14 @@ import {
 } from 'angular-calendar';
 import {CustomEventTitleFormatter} from './../../services/custom-event-title-formatter.provider';
 import {CustomDateFormatter} from './../../services/custom-date-formatter.provider';
+declare var jquery:any;
+declare var $ :any;
 
 @Component({
   selector: 'app-coach-profile',
   templateUrl: './coach-profile.component.html',
   styleUrls: ['./coach-profile.component.scss'],
+  encapsulation: ViewEncapsulation.None,
   providers: [
     {
       provide: CustomDateFormatter,
@@ -23,7 +26,18 @@ import {CustomDateFormatter} from './../../services/custom-date-formatter.provid
   ]
 })
 export class CoachProfileComponent implements OnInit {
+  autoTicks = false;
+  disabled = false;
+  invert = false;
+  max = 10;
+  min = 0;
+  showTicks = false;
+  step = 0.5;
+  thumbLabel = true;
+  value = 0;
+  vertical = false;
 
+  infos;
   viewDate: Date = new Date();
   events: CalendarEvent[] = [
     {
@@ -40,8 +54,12 @@ export class CoachProfileComponent implements OnInit {
 
   locale = 'fr';
 
-  handleEvent() {
-    console.log('Hey');
+  handleEvent(event) {
+    console.log(event);
+    $("#calendarModal").modal({
+      keyboard: false,
+      });
+    this.infos = event.title;
   }
 
   constructor() {
@@ -49,4 +67,5 @@ export class CoachProfileComponent implements OnInit {
 
   ngOnInit() {
   }
+  
 }

@@ -1,28 +1,90 @@
-<div class="container-fluid">
-  <div class="container">
+<div class="container-fluid user-bg">
+  <div class="container py-3">
     <div class="row">
-      <div class="col">
-        <h5>Mes cours</h5>
-        <ul>
-          <li>Mes abonnements</li>
-          <li>Mon calendrier</li>
-        </ul>
-      </div>
-      <div class="col-12 col-md-9">
+      <div class="col-12">
         <div class="row">
-          <h4 class="col-12">Mon compte</h4>
-          <h6>Informations générales</h6>
-          <div class="col-3">
-            
+          <div class="col-auto px-0 user-icon">
+            <div class="row m-0">
+              <div class="col-12 px-0 user-img" [style.backgroundImage]="'url('+ userIcon +')'"></div>
+            </div>
+          </div>
+          <div class="col-4 px-5 user-infos">
+            <div class="row">
+              <div class="col-12 user-name">{{username}}</div>
+              <div class="col-12 px-4">
+                <div class="row m-0">
+                  <div class="col-auto px-3 nb-heures">{{nbHeures}} h</div>
+                </div>
+              </div>
+              <div class="col-12">Age : {{age}}</div>
+              <div class="col-12">Pays : {{pays}}</div>
+              <div class="col-12">Langue : {{lang}}</div>
+              <div class="col-12">Divers : {{divers}}</div>
+            </div>
           </div>
           <div class="col">
             <div class="row">
-              <div class="col-5 text-right font-weight-bold">Pseudonyme </div>
-              <div class="col-7">Histouche </div>
+              <div class="col-12">
+                <div class="row justify-content-end">
+                  <div routerLink="/rechargement-gc" class="col-auto btn-recharge">
+                    <i class="material-icons">
+                    add
+                    </i>
+                    Recharger son compte en GoldCoin</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 mt-3">
+            <div class="row">
+                <div class="col-12">
+                    <ul class="nav nav-tabs row m-0" id="myTab" role="tablist">
+                        <li class="nav-item col-3">
+                          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Mes stats</a>
+                        </li>
+                        <li class="nav-item col-3">
+                          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Mes cours</a>
+                        </li>
+                        <li class="nav-item col-3">
+                          <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Mes préférences</a>
+                        </li>
+                        <li class="nav-item col-3">
+                            <a class="nav-link" id="calendar-tab" data-toggle="tab" href="#calendar" role="tab" aria-controls="calendar" aria-selected="false">Calendrier</a>
+                        </li>
+                      </ul>
+                  </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="container">
+    <div class="row">
+      
+        <div class="tab-content col-12" id="myTabContent">
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            Mes stats
+          </div>
+          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            Mes cours
+          </div>
+          <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+            Mes préférences
+          </div>
+          <div class="tab-pane fade" id="calendar" role="tabpanel" aria-labelledby="contact-tab">
+            <mwl-calendar-week-view
+              [viewDate]="viewDate"
+              [events]="events"
+              [locale]="locale"
+              [refresh]="refresh"
+              (eventClicked)="handleEvent($event.event)">
+            </mwl-calendar-week-view>
+          </div>
+        </div>
+    </div>
+    
   </div>
 </div>

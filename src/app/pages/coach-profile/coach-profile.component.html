@@ -96,8 +96,182 @@
         [events]="events"
         [locale]="locale"
         [refresh]="refresh"
-        (eventClicked)="handleEvent('Clicked', $event.event)">
+        (eventClicked)="handleEvent($event.event)">
       </mwl-calendar-week-view>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="calendarModal" tabindex="-1" role="dialog" aria-labelledby="calendarModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content rounded-0">
+      <div class="modal-header rounded-0">
+          <h5 class="modal-title" id="exampleModalLabel">Section réservation de séance</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="carouselReservation.selectSlide(0)">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body">
+        <mdb-carousel [isControls]="true" [interval]="500000" #carouselReservation [animation]="'slide'" class="mt-2 col-12 px-0">
+          <mdb-slide class="row m-0 h-100 justify-content-center">
+            <div class="row m-0">
+              <div class="col-12 col-md-6">
+                <div class="row m-0">
+                  <h5 class="text-center">La section</h5>
+                  <div class="col-12">
+                    text
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <form class="row m-0">
+                    <div class="form-header col-12 text-center py-3">
+                      {{infos}}
+                    </div>
+                    <div class="form-body py-3 col-12">
+                      <div class="row">
+                        <div class="col-12 form-group">
+                          <div class="row justify-content-center">
+                            <div class="col-12 text-center">Sélectionner nombres d'heures</div>
+                            <div class="col-auto">
+                                <select id="default-material-select">
+                                  <option value="" disabled selected>Choisir l'horraire</option>
+                                  <option value="1">1 heure</option>
+                                  <option value="2">2 heures</option>
+                                  <option value="3">3 heures</option>
+                                  <option value="4">4 heures</option>
+                                </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12 form-group">
+                          <div class="row">
+                            <div class="col-12 text-center">15 GoldCoins l'heure</div>
+                            <div class="col-12 text-center">Coût 250 Goldcoins</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-footer col-12">
+                      <div class="row">
+                        <div class="col-12 col-sm-6 py-3 text-center align-self-center cliquable" (click)="carouselReservation.nextSlide()">
+                              Réserver ces heures avec ce coach
+                        </div>
+                        <div class="col-12 col-sm-6 py-3 text-center align-self-center cliquable">
+                            Acheter des goldCoins
+                        </div>
+                      </div>
+                    </div>
+                </form>
+              </div>
+            </div>
+          </mdb-slide> 
+          <mdb-slide class="row m-0 h-100 justify-content-center">  
+            <div class="row h-100 m-0">
+              <h5 class="col-12">Notez vos performances actuelles</h5>
+              <div class="col-12 col-md-6">
+                <div class="row mt-3">
+                  <div class="col-4 p-0 align-self-center text-right">
+                    Précision : 
+                  </div>
+                  <div class="col">
+                      <mat-slider class="prix-cursor py-0 col-12 p-0" #precision [disabled]="disabled"
+                      [invert]="invert"
+                      [max]="max"
+                      [min]="min"
+                      [step]="step"
+                      [thumbLabel]="thumbLabel"
+                      [tickInterval]="tickInterval"
+                      [(ngModel)]="value"
+                      [vertical]="vertical"></mat-slider>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="row mt-3">
+                  <div class="col-4 p-0 align-self-center text-right">
+                    MindGame : 
+                  </div>
+                  <div class="col">
+                      <mat-slider class="prix-cursor py-0 col-12 p-0" #mindgame [disabled]="disabled"
+                      [invert]="invert"
+                      [max]="max"
+                      [min]="min"
+                      [step]="step"
+                      [thumbLabel]="thumbLabel"
+                      [tickInterval]="tickInterval"
+                      [(ngModel)]="value"
+                      [vertical]="vertical"></mat-slider>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                  <div class="row mt-3">
+                    <div class="col-4 p-0 align-self-center text-right">
+                      Communication : 
+                    </div>
+                    <div class="col">
+                        <mat-slider class="prix-cursor py-0 col-12 p-0" #communication [disabled]="disabled"
+                        [invert]="invert"
+                        [max]="max"
+                        [min]="min"
+                        [step]="step"
+                        [thumbLabel]="thumbLabel"
+                        [tickInterval]="tickInterval"
+                        [(ngModel)]="value"
+                        [vertical]="vertical"></mat-slider>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <div class="row mt-3">
+                    <div class="col-4 p-0 align-self-center text-right">
+                      Déplacements : 
+                    </div>
+                    <div class="col">
+                        <mat-slider class="prix-cursor py-0 col-12 p-0" #deplacements [disabled]="disabled"
+                        [invert]="invert"
+                        [max]="max"
+                        [min]="min"
+                        [step]="step"
+                        [thumbLabel]="thumbLabel"
+                        [tickInterval]="tickInterval"
+                        [(ngModel)]="value"
+                        [vertical]="vertical"></mat-slider>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <div class="row mt-3">
+                    <div class="col-4 p-0 align-self-center text-right">
+                      Réflexes : 
+                    </div>
+                    <div class="col">
+                        <mat-slider class="prix-cursor py-0 col-12 p-0" #reflexes [disabled]="disabled"
+                        [invert]="invert"
+                        [max]="max"
+                        [min]="min"
+                        [step]="step"
+                        [thumbLabel]="thumbLabel"
+                        [tickInterval]="tickInterval"
+                        [(ngModel)]="value"
+                        [vertical]="vertical"></mat-slider>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="row justify-content-end">
+                    <button class="col-auto reservation-btn">Valider la réservation</button>
+                  </div>
+                </div>
+            </div>
+          </mdb-slide>  
+        </mdb-carousel>     
+      </div>
+      <div class="modal-footer rounded-0 p-0">
+        <div class="col-12">
+            
+        </div>
+      </div>
     </div>
   </div>
 </div>
