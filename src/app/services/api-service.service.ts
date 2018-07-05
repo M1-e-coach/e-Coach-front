@@ -12,6 +12,10 @@ export class ApiService {
     return this.http.get(`${this.baseUrl}/users`);
   }
 
+  getUserById(id) {
+    return this.http.get(`${this.baseUrl}/users/${id}`);
+  }
+
   getCoach() {
     return this.http.get(`${this.baseUrl}/coachs`);
   }
@@ -25,8 +29,6 @@ export class ApiService {
 
   postLogin(user) {
     console.log(user);
-    return this.http.post(`${this.baseUrl}/login`, user).subscribe(data => {
-      console.log(data);
-    });
+    return this.http.post(`${this.baseUrl}/login`, user);
   }
 }

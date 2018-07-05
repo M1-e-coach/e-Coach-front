@@ -7,6 +7,8 @@ import {ErrorStateMatcher} from '@angular/material/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ApiService} from '../../services/api-service.service';
 
+declare var jquery: any;
+declare var $: any;
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -32,6 +34,8 @@ export class SiteHeaderComponent implements OnInit {
   selection: String = 'home';
   menuOpen = false;
   isConnected = false;
+  connError = false;
+  connectedUser;
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
@@ -39,16 +43,17 @@ export class SiteHeaderComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object, private route: Router, private apiService: ApiService) {
+    this.connectedUser = localStorage.getItem('connectedUser') && JSON.parse(localStorage.getItem('connectedUser'));
+    if (this.connectedUser !== null) {
+      this.isConnected = true;
+    }
   }
 
   username: string;
   password: string;
   email: string;
 
-  ngOnInit() {
-    if (isPlatformBrowser(this.platformId)) {
-    }
-  }
+  ngOnInit() {}
 
   select(item) {
     console.log(this.selection, item);
@@ -70,8 +75,18 @@ export class SiteHeaderComponent implements OnInit {
     this.apiService.postLogin({
       'email': this.email,
       'password': this.password
+    }).subscribe(data => {
+      console.log(data);
+      if (data !== 403) {
+        $('#modalCon').modal('hide');
+        this.isConnected = true;
+        this.connectedUser = data;
+        localStorage.setItem('connectedUser', JSON.stringify(data));
+      } else {
+        this.connError = true;
+        console.log('Error');
+      }
     });
-    // this.isConnected = true;
   }
 
   inscription() {

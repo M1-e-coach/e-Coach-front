@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {
   CalendarEvent,
   DAYS_OF_WEEK,
@@ -6,6 +6,8 @@ import {
 } from 'angular-calendar';
 import {CustomEventTitleFormatter} from './../../services/custom-event-title-formatter.provider';
 import {CustomDateFormatter} from './../../services/custom-date-formatter.provider';
+import {ApiService} from '../../services/api-service.service';
+import {Router, ActivatedRoute, Params} from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -19,10 +21,12 @@ import {CustomDateFormatter} from './../../services/custom-date-formatter.provid
     {
       provide: CalendarEventTitleFormatter,
       useClass: CustomEventTitleFormatter
-    }
+    },
+    ApiService
   ]
 })
 export class UserComponent implements OnInit {
+  connectedUser: any;
   username = 'Pharaz';
   userIcon = 'https://material.angular.io/assets/img/examples/shiba1.jpg';
   nbHeures = 105;
@@ -30,6 +34,8 @@ export class UserComponent implements OnInit {
   pays = 'France';
   lang = 'Fr';
   divers = 'Aucune idée';
+
+  locale = 'fr';
 
   viewDate: Date = new Date();
   events: CalendarEvent[] = [
@@ -45,7 +51,21 @@ export class UserComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor(private apiService: ApiService, private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.params.subscribe((params: Params) => {
+      this.apiService.getUserById(params['id']).subscribe(userData => {
+        console.log(userData);
+        this.username = userData.username;
+        // userIcon = 'https://material.angular.io/assets/img/examples/shiba1.jpg';
+        // nbHeures = 105;
+        // age = 25;
+        // pays = 'France';
+        // lang = 'Fr';
+        // divers = 'Aucune idée';
+      });
+    });
+    this.connectedUser = localStorage.getItem('connectedUser') && JSON.parse(localStorage.getItem('connectedUser'));
+  }
 
   ngOnInit() {
   }
