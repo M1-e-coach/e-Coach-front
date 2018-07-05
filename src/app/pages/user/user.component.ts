@@ -67,6 +67,11 @@ export class UserComponent implements OnInit {
       });
     });
     this.connectedUser = localStorage.getItem('connectedUser') && JSON.parse(localStorage.getItem('connectedUser'));
+    if (this.connectedUser == null) {
+      this.connectedUser = {
+        username: ''
+      };
+    }
   }
 
   ngOnInit() {
