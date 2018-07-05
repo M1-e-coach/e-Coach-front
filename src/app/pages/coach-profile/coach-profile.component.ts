@@ -6,6 +6,8 @@ import {
 } from 'angular-calendar';
 import {CustomEventTitleFormatter} from './../../services/custom-event-title-formatter.provider';
 import {CustomDateFormatter} from './../../services/custom-date-formatter.provider';
+import {ActivatedRoute, Params} from '@angular/router';
+import {ApiService} from '../../services/api-service.service';
 
 declare var jquery: any;
 declare var $: any;
@@ -23,7 +25,8 @@ declare var $: any;
     {
       provide: CalendarEventTitleFormatter,
       useClass: CustomEventTitleFormatter
-    }
+    },
+    ApiService
   ]
 })
 export class CoachProfileComponent implements OnInit {
@@ -37,6 +40,9 @@ export class CoachProfileComponent implements OnInit {
   thumbLabel = true;
   value = 0;
   vertical = false;
+  curentCoach: any = {
+    username: ''
+  };
 
   infos;
   viewDate: Date = new Date();
@@ -63,7 +69,19 @@ export class CoachProfileComponent implements OnInit {
     this.infos = event.title;
   }
 
-  constructor() {
+  constructor(private apiService: ApiService, private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.params.subscribe((params: Params) => {
+      this.apiService.getUserById(params['id']).subscribe(coachData => {
+        console.log(coachData);
+        this.curentCoach = coachData;
+        // userIcon = 'https://material.angular.io/assets/img/examples/shiba1.jpg';
+        // nbHeures = 105;
+        // age = 25;
+        // pays = 'France';
+        // lang = 'Fr';
+        // divers = 'Aucune idée';
+      });
+    });
   }
 
   ngOnInit() {

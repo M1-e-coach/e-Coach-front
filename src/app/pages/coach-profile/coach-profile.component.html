@@ -4,7 +4,7 @@
       <img src="https://material.angular.io/assets/img/examples/shiba2.jpg">
     </div>
     <div class="col-4 coach-profile-infocoach">
-      <h2>Nom du coach</h2>
+      <h2>{{curentCoach.username}}</h2>
       <app-star-rating class="coach-profile-starrating" rating="2"></app-star-rating>
       <span>180 h</span>
       <ul>
@@ -164,14 +164,14 @@
                 </form>
               </div>
             </div>
-          </mdb-slide> 
-          <mdb-slide class="row m-0 h-100 justify-content-center">  
+          </mdb-slide>
+          <mdb-slide class="row m-0 h-100 justify-content-center">
             <div class="row h-100 m-0">
               <h5 class="col-12">Notez vos performances actuelles</h5>
               <div class="col-12 col-md-6">
                 <div class="row mt-3">
                   <div class="col-4 p-0 align-self-center text-right">
-                    Précision : 
+                    Précision :
                   </div>
                   <div class="col">
                       <mat-slider class="prix-cursor py-0 col-12 p-0" #precision [disabled]="disabled"
@@ -189,7 +189,7 @@
               <div class="col-12 col-md-6">
                 <div class="row mt-3">
                   <div class="col-4 p-0 align-self-center text-right">
-                    MindGame : 
+                    MindGame :
                   </div>
                   <div class="col">
                       <mat-slider class="prix-cursor py-0 col-12 p-0" #mindgame [disabled]="disabled"
@@ -207,7 +207,7 @@
               <div class="col-12 col-md-6">
                   <div class="row mt-3">
                     <div class="col-4 p-0 align-self-center text-right">
-                      Communication : 
+                      Communication :
                     </div>
                     <div class="col">
                         <mat-slider class="prix-cursor py-0 col-12 p-0" #communication [disabled]="disabled"
@@ -225,7 +225,7 @@
                 <div class="col-12 col-md-6">
                   <div class="row mt-3">
                     <div class="col-4 p-0 align-self-center text-right">
-                      Déplacements : 
+                      Déplacements :
                     </div>
                     <div class="col">
                         <mat-slider class="prix-cursor py-0 col-12 p-0" #deplacements [disabled]="disabled"
@@ -243,7 +243,7 @@
                 <div class="col-12 col-md-6">
                   <div class="row mt-3">
                     <div class="col-4 p-0 align-self-center text-right">
-                      Réflexes : 
+                      Réflexes :
                     </div>
                     <div class="col">
                         <mat-slider class="prix-cursor py-0 col-12 p-0" #reflexes [disabled]="disabled"
@@ -264,12 +264,12 @@
                   </div>
                 </div>
             </div>
-          </mdb-slide>  
-        </mdb-carousel>     
+          </mdb-slide>
+        </mdb-carousel>
       </div>
       <div class="modal-footer rounded-0 p-0">
         <div class="col-12">
-            
+
         </div>
       </div>
     </div>

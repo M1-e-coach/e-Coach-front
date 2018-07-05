@@ -26,7 +26,9 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
   ]
 })
 export class UserComponent implements OnInit {
-  connectedUser: any;
+  connectedUser: any = {
+    username: ''
+  };
   username = 'Pharaz';
   userIcon = 'https://material.angular.io/assets/img/examples/shiba1.jpg';
   nbHeures = 105;
@@ -65,6 +67,11 @@ export class UserComponent implements OnInit {
       });
     });
     this.connectedUser = localStorage.getItem('connectedUser') && JSON.parse(localStorage.getItem('connectedUser'));
+    if (this.connectedUser == null) {
+      this.connectedUser = {
+        username: ''
+      };
+    }
   }
 
   ngOnInit() {
