@@ -1,3 +1,46 @@
-<p>
-  recharge works!
-</p>
+<div class="container-fluid">
+  <div class="container">
+    <div class="row">
+        <h1 class="col-12 mt-5 mb-3 text-center">Choisir un pack</h1>
+        <div class="col-12">
+          <div class="row">
+            <div *ngFor="let pack of packs" class="col px-1">
+              <div class="row m-0">
+                <div class="col-12 pack mb-3 p-2 pt-4" (clicked)="openAchatModal(pack)">
+                  <div class="row justify-content-center m-0">
+                      <div class="pack-name col-auto rounded-circle text-center" [style.background-color]="pack.color">
+                        {{pack.name}}
+                      </div>
+                      <div class="col-12 mt-3 gc-nb text-center">
+                        Pack {{pack.gc}} GoldCoins
+                      </div>
+                      <div class="col-12 price text-center mt-2 rounded p-2">
+                        {{pack.price}} €
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="AchatModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content rounded-0">
+      <div class="modal-header rounded-0">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Achat de GoldCoins</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+      </div>
+      <div class="modal-footer rounded-0">
+        
+      </div>
+    </div>
+  </div>
+</div>
