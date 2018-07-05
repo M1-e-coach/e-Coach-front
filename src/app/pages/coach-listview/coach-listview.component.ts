@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ApiService} from '../../services/api-service.service';
 
 @Component({
@@ -7,7 +7,8 @@ import {ApiService} from '../../services/api-service.service';
   styleUrls: ['./coach-listview.component.scss'],
   providers: [
     ApiService
-  ]
+  ],
+  encapsulation: ViewEncapsulation.None
 })
 export class CoachListviewComponent implements OnInit {
 
