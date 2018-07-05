@@ -5,6 +5,7 @@ import * as $ from 'jquery';
 import {Router} from '@angular/router';
 import {ErrorStateMatcher} from '@angular/material/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import {ApiService} from '../../services/api-service.service';
 
 
 /** Error when invalid control is dirty, touched, or submitted. */
@@ -19,12 +20,15 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   selector: 'app-site-header',
   templateUrl: './site-header.component.html',
   styleUrls: ['./site-header.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  providers: [
+    ApiService
+  ]
 })
 export class SiteHeaderComponent implements OnInit {
   /* Game Coach */
   selected = 'option2';
-  siteName = "e-Coach";
+  siteName = 'e-Coach';
   selection: String = 'home';
   menuOpen = false;
   isConnected = false;
@@ -34,15 +38,16 @@ export class SiteHeaderComponent implements OnInit {
   ]);
   matcher = new MyErrorStateMatcher();
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object, private route: Router) {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, private route: Router, private apiService: ApiService) {
   }
 
-  username = '';
-  password = '';
-  email = '';
+  username: string;
+  password: string;
+  email: string;
 
   ngOnInit() {
-    if (isPlatformBrowser(this.platformId)) {}
+    if (isPlatformBrowser(this.platformId)) {
+    }
   }
 
   select(item) {
@@ -61,14 +66,24 @@ export class SiteHeaderComponent implements OnInit {
     // this.route.navigate(['item-details', stoId]);
   }
 
-  connexion(){
-    this.isConnected = true;
+  connexion() {
+    this.apiService.postLogin({
+      'email': this.email,
+      'password': this.password
+    });
+    // this.isConnected = true;
   }
+
   inscription() {
+    console.log('toto');
     /*this.variables.setName(this.username);
     this.variables.setPassword(this.password);
     this.variables.setEmail(this.email);
     this.isConnected = true;*/
+    this.apiService.postRegister({
+      'username': this.username,
+      'email': this.email,
+      'password': this.password
+    });
   }
-
 }

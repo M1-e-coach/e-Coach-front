@@ -16,15 +16,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.http.get('http://localhost:4200').subscribe(data => {
-      for (let key in data) {
-        if (data.hasOwnProperty(key)) {
-          this.projects.push(data[key]);
-        }
-      }
 
-      console.log(this.projects);
-    });
   }
 
 }
