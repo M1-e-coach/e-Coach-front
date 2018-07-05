@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-coach-listitem',
@@ -7,11 +7,12 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class CoachListitemComponent implements OnInit {
+  @Input() coach: any;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
-
   }
 
 }

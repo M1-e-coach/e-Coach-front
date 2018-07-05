@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="col-12">
+    <div class="coach-listview-wrapper row">
+      <div class="col-3" *ngFor="let coach of listCoach">
+        <mat-card class="coach-listitem">
+          <mat-card-header>
+            <div mat-card-avatar class="coach-listitem-image"></div>
+            <mat-card-title>
+              {{coach.username}}<span>coach.heure h</span>
+            </mat-card-title>
+            <mat-card-subtitle>
+              <app-star-rating rating="5"></app-star-rating>
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+              coach.desc
+            </p>
+          </mat-card-content>
+          <mat-card-actions class="coach-listitem-actions">
+            <button mat-raised-button>dès coach.cost <span>€/h</span></button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

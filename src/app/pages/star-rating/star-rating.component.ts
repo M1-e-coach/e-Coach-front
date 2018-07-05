@@ -23,8 +23,6 @@ export class StarRatingComponent implements OnInit {
     } else {
       this.emptyStar = Array(5 - this.nbStar).fill('0').map((x, i) => i);
     }
-
-
     // this.halfStar = this.rating % 2;
     // console.log(this.halfStar)
   }
