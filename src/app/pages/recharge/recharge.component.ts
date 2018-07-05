@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, ElementRef, Inject } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { StripeService, Elements, Element as StripeElement, ElementsOptions } from "ngx-stripe";
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { StripeService, Elements, Element as StripeElement, ElementsOptions } from 'ngx-stripe';
 
 declare var jquery: any;
 declare var $: any;
@@ -80,42 +80,39 @@ export class RechargeComponent implements OnInit {
           this.card = this.elements.create('card', {
             style: {
               base: {
-                iconColor: '#666EE8',
-                color: '#31325F',
+                iconColor: '#32325d',
+                color: '#32325d',
                 lineHeight: '40px',
                 fontWeight: 300,
                 fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+                fontSmoothing: 'antialiased',
                 fontSize: '18px',
                 '::placeholder': {
-                  color: '#CFD7E0'
+                  color: '#aab7c4'
                 }
               }
-            } 
-          });
-          this.card.mount('#card-element');
+            }});
+        this.card.mount('#card-element');
         }
       });
   }
-
-  
   buy(amount) {
-    let self = this;
     console.log('')
     const name = this.stripeTest.get('name').value;
     this.stripeService
-      .createToken(this.card, { name },)
+      .createToken(this.card, { name }, )
       .subscribe(result => {
         if (result.token) {
           // Use the token to create a charge or a customer
           // https://stripe.com/docs/charges
-        
+          $('#carouselPaiement').carousel('next');
         } else if (result.error) {
           // Error creating the token
           console.log(result.error.message);
         }
       });
   }
-  openAchatModal(pack){
+  openAchatModal(pack) {
     $('#achatModal').modal({
       keyboard: false,
     });

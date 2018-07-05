@@ -9,6 +9,9 @@ html, body {
   overflow-x: hidden;
 }
 
+*{
+  cursor: default;
+}
 .fa-2x {
   font-size: 2em;
 }
@@ -23,7 +26,7 @@ html, body {
 }
 
 .cliquable {
-    cursor: pointer;    
+    cursor: pointer;
   outline: none !important;
   text-align: center;
 }

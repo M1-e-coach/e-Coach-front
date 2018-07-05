@@ -1,28 +1,28 @@
 <div class="container-fluid">
-  <div class="container">
+  <div class="container pb-5">
     <div class="row">
-        <h1 class="col-12 mt-5 mb-3 text-center">Choisir un pack</h1>
-        <div class="col-12">
-          <div class="row">
-            <div *ngFor="let pack of packs" class="col px-1">
-              <div class="row m-0">
-                <div class="col-12 pack mb-3 p-2 pt-4" (click)="openAchatModal(pack)">
-                  <div class="row justify-content-center m-0">
-                      <div class="pack-name col-auto rounded-circle text-center" [style.background-color]="pack.color">
-                        {{pack.name}}
-                      </div>
-                      <div class="col-12 mt-3 gc-nb text-center">
-                        Pack {{pack.gc}} GoldCoins
-                      </div>
-                      <div class="col-12 price text-center mt-2 rounded p-2">
-                        {{pack.price}} €
-                      </div>
+      <h1 class="col-12 mt-5 mb-4 text-center">Choisir un pack</h1>
+      <div class="col-12">
+        <div class="row">
+          <div *ngFor="let pack of packs" class="col px-1">
+            <div class="row m-0">
+              <div class="col-12 pack mb-3 p-2 pt-4" (click)="openAchatModal(pack)">
+                <div class="row justify-content-center m-0">
+                  <div class="pack-name col-auto rounded-circle text-center" [style.background-color]="pack.color">
+                    {{pack.name}}
+                  </div>
+                  <div class="col-12 mt-3 gc-nb text-center">
+                    Pack {{pack.gc}} GoldCoins
+                  </div>
+                  <div class="col-12 price text-center mt-2 rounded p-2">
+                    {{pack.price}} €
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
     </div>
   </div>
 </div>
@@ -36,24 +36,42 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="col-12">
-          <div class="row">
-            <div class="col-12">
-              Vous allez commandez {{gc}} goldcoins pour {{prix}} euros.
-              <form novalidate (ngSubmit)="buy(amount)" [formGroup]="stripeTest">
-                  <input type="text" formControlName="name" placeholder="Nom sur la carte">
-                  <div id="card-element" class="field"></div>
-                  <button type="submit">
-                    ACHETER
-                  </button>
-                </form>
+        <mdb-carousel [isControls]="true" [interval]="50000000" id="carouselPaiement" #carouselPaiement [animation]="'slide'" class="mt-2 col-12 px-0">
+          <mdb-slide class="row m-0 h-100 justify-content-center">
+            <div class="row m-0">
+              <div class="col-12">
+                <div class="row">
+                  <div class="col-12">
+                    Vous allez commandez {{gc}} goldcoins pour {{prix}} euros.<br><br>
+                    Paiement effectué avec Stripe<br><br>
+                    <form novalidate (ngSubmit)="buy(amount)" [formGroup]="stripeTest">
+                      <input class="paiement-input" type="text" formControlName="name" placeholder="Nom sur la carte">
+                      <div id="card-element" class="field"></div>
+                      <button class="reservation-btn" type="submit">
+                        ACHETER
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+          </mdb-slide>
+          <mdb-slide class="row m-0 h-100 justify-content-center">
+            <div class="row m-0">
+              <div class="col-12">
+                Merci pour votre achat de GoldCoins.<br>
+                Vous pouvez dès maintenant les utiliser pour réserver des cours.
+              </div>
+              <div class="col-12">
+                <div class="row">
+                  <button class="reservation-btn" routerLink="/">Retour à l'accueil</button>
+                </div>
+              </div>
+            </div>
+          </mdb-slide>
+        </mdb-carousel>
       </div>
-      <div class="modal-footer rounded-0">
-          <button class="col-auto reservation-btn">Valider la commande</button>
-      </div>
+
     </div>
   </div>
 </div>

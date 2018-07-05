@@ -1,9 +1,5 @@
 import {Component, Inject, OnInit, ViewEncapsulation} from '@angular/core';
-import {
-  CalendarEvent,
-  DAYS_OF_WEEK,
-  CalendarEventTitleFormatter
-} from 'angular-calendar';
+import { CalendarEvent, DAYS_OF_WEEK, CalendarEventTitleFormatter } from 'angular-calendar';
 import {CustomEventTitleFormatter} from './../../services/custom-event-title-formatter.provider';
 import {CustomDateFormatter} from './../../services/custom-date-formatter.provider';
 import {ActivatedRoute, Params} from '@angular/router';
@@ -30,6 +26,11 @@ declare var $: any;
   ]
 })
 export class CoachProfileComponent implements OnInit {
+  initialPrecision = 0;
+  initialMindGame = 0;
+  initialCom = 0;
+  initialDeplacement = 0;
+  initialReflexes = 0;
   autoTicks = false;
   disabled = false;
   invert = false;
@@ -38,7 +39,6 @@ export class CoachProfileComponent implements OnInit {
   showTicks = false;
   step = 0.5;
   thumbLabel = true;
-  value = 0;
   vertical = false;
   currentCoach: any = {
     coachInfos: [
@@ -48,7 +48,6 @@ export class CoachProfileComponent implements OnInit {
       }
     ]
   };
-
   infos;
   viewDate: Date = new Date();
   events: CalendarEvent[] = [
