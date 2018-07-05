@@ -1,28 +1,28 @@
 <div class="container-fluid">
   <div class="container pb-5">
     <div class="row">
-        <h1 class="col-12 mt-5 mb-3 text-center">Choisir un pack</h1>
-        <div class="col-12">
-          <div class="row">
-            <div *ngFor="let pack of packs" class="col px-1">
-              <div class="row m-0">
-                <div class="col-12 pack mb-3 p-2 pt-4" (click)="openAchatModal(pack)">
-                  <div class="row justify-content-center m-0">
-                      <div class="pack-name col-auto rounded-circle text-center" [style.background-color]="pack.color">
-                        {{pack.name}}
-                      </div>
-                      <div class="col-12 mt-3 gc-nb text-center">
-                        Pack {{pack.gc}} GoldCoins
-                      </div>
-                      <div class="col-12 price text-center mt-2 rounded p-2">
-                        {{pack.price}} €
-                      </div>
+      <h1 class="col-12 mt-5 mb-4 text-center">Choisir un pack</h1>
+      <div class="col-12">
+        <div class="row">
+          <div *ngFor="let pack of packs" class="col px-1">
+            <div class="row m-0">
+              <div class="col-12 pack mb-3 p-2 pt-4" (click)="openAchatModal(pack)">
+                <div class="row justify-content-center m-0">
+                  <div class="pack-name col-auto rounded-circle text-center" [style.background-color]="pack.color">
+                    {{pack.name}}
+                  </div>
+                  <div class="col-12 mt-3 gc-nb text-center">
+                    Pack {{pack.gc}} GoldCoins
+                  </div>
+                  <div class="col-12 price text-center mt-2 rounded p-2">
+                    {{pack.price}} €
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
     </div>
   </div>
 </div>

@@ -18,7 +18,7 @@ app-home{
     }
     .mat-form-field-wrapper{
         padding: 0 !important;
-       
+
     }
     .mat-form-field-underline{
         bottom: 3px !important;
@@ -55,7 +55,10 @@ app-home{
         background-color: #ccc;
         button{
             background-color: $primary;
-            color: #fff;    
+            color: #fff;
         }
     }
+  button{
+    outline: none !important;
+  }
 }

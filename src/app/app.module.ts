@@ -62,6 +62,9 @@ import {RechargeComponent} from './pages/recharge/recharge.component';
 import {CoachListviewComponent} from './pages/coach-listview/coach-listview.component';
 
 import { NgxStripeModule } from 'ngx-stripe';
+import { HowItWorksComponent } from './pages/how-it-works/how-it-works.component';
+import { BecomeCoatchComponent } from './pages/become-coatch/become-coatch.component';
+import { SecurityComponent } from './pages/security/security.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +79,10 @@ import { NgxStripeModule } from 'ngx-stripe';
     StarRatingComponent,
     CoachProfileComponent,
     RechargeComponent,
-    CoachListviewComponent
+    CoachListviewComponent,
+    HowItWorksComponent,
+    BecomeCoatchComponent,
+    SecurityComponent
   ],
   imports: [
     FormsModule,
@@ -127,7 +133,9 @@ import { NgxStripeModule } from 'ngx-stripe';
       {path: 'coach-listitem', component: CoachListitemComponent, pathMatch: 'full'},
       {path: 'rechargement-gc', component: RechargeComponent, pathMatch: 'full'},
       {path: 'coach-listview', component: CoachListviewComponent, pathMatch: 'full'},
-
+      {path: 'comment-ca-marche', component: HowItWorksComponent, pathMatch: 'full'},
+      {path: 'devenir-coach', component: BecomeCoatchComponent, pathMatch: 'full'},
+      {path: 'securite', component: SecurityComponent, pathMatch: 'full'},
     ])
   ],
   providers: [],
