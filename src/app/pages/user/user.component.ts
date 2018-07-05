@@ -26,7 +26,9 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
   ]
 })
 export class UserComponent implements OnInit {
-  connectedUser: any;
+  connectedUser: any = {
+    'username': ''
+  };
   username = 'Pharaz';
   userIcon = 'https://material.angular.io/assets/img/examples/shiba1.jpg';
   nbHeures = 105;
@@ -55,7 +57,7 @@ export class UserComponent implements OnInit {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.apiService.getUserById(params['id']).subscribe(userData => {
         console.log(userData);
-        this.username = userData.username;
+        //this.username = userData.username;
         // userIcon = 'https://material.angular.io/assets/img/examples/shiba1.jpg';
         // nbHeures = 105;
         // age = 25;

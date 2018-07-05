@@ -1,7 +1,5 @@
 import {Component, OnInit, ViewEncapsulation, PLATFORM_ID, Inject, Injectable} from '@angular/core';
 import {isPlatformBrowser, isPlatformServer} from '@angular/common';
-
-import * as $ from 'jquery';
 import {Router} from '@angular/router';
 import {ErrorStateMatcher} from '@angular/material/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
