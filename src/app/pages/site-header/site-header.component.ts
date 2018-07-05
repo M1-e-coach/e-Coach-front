@@ -39,7 +39,10 @@ export class SiteHeaderComponent implements OnInit {
     Validators.email,
   ]);
   matcher = new MyErrorStateMatcher();
-
+  username: string;
+  password: string;
+  email: string;
+  
   constructor(@Inject(PLATFORM_ID) private platformId: Object, private route: Router, private apiService: ApiService) {
     this.connectedUser = localStorage.getItem('connectedUser') && JSON.parse(localStorage.getItem('connectedUser'));
     if (this.connectedUser !== null) {
@@ -47,9 +50,7 @@ export class SiteHeaderComponent implements OnInit {
     }
   }
 
-  username: string;
-  password: string;
-  email: string;
+  
 
   ngOnInit() {}
 

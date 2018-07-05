@@ -77,6 +77,7 @@ import {CoachListviewComponent} from './pages/coach-listview/coach-listview.comp
     CoachListviewComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     [BrowserAnimationsModule, HttpClientModule],
     MatAutocompleteModule,

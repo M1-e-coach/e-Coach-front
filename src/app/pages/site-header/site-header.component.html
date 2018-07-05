@@ -156,7 +156,7 @@
             <label>Pseudo</label>
           </div>
           <div class="group">
-            <input matInput type="email" [(ngModel)]="email" required/>
+            <input matInput type="email" [(ngModel)]="emails" required/>
             <span class="highlight"></span>
             <span class="bar"></span>
             <label>Email</label>
@@ -199,11 +199,8 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-     
       <div class="modal-body">
-          <input matInput type="email" [(ngModel)]="email"/>
-          <input matInput type="password" [(ngModel)]="password"/>
-        <!-- <div class="group">
+        <div class="group">
           <input matInput type="email" [(ngModel)]="email"/>
           <span class="highlight"></span>
           <span class="bar"></span>
@@ -214,7 +211,7 @@
           <span class="highlight"></span>
           <span class="bar"></span>
           <label>Mot de passe</label>
-        </div> -->
+        </div>
 
         <!--<form class="inscription-form">-->
         <!--<mat-form-field class="example-full-width col-12">-->
