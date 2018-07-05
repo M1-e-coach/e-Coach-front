@@ -42,7 +42,7 @@ export class SiteHeaderComponent implements OnInit {
   username: string;
   password: string;
   email: string;
-  
+
   constructor(@Inject(PLATFORM_ID) private platformId: Object, private route: Router, private apiService: ApiService) {
     this.connectedUser = localStorage.getItem('connectedUser') && JSON.parse(localStorage.getItem('connectedUser'));
     if (this.connectedUser !== null) {
@@ -50,9 +50,9 @@ export class SiteHeaderComponent implements OnInit {
     }
   }
 
-  
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   select(item) {
     console.log(this.selection, item);
@@ -68,6 +68,12 @@ export class SiteHeaderComponent implements OnInit {
   navigateToUser() {
     this.route.navigate(['app-user-page']);
     // this.route.navigate(['item-details', stoId]);
+  }
+
+  logout() {
+    localStorage.clear();
+    this.isConnected = false;
+    this.connectedUser = {};
   }
 
   connexion() {

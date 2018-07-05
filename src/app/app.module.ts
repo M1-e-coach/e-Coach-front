@@ -60,6 +60,7 @@ import {StarRatingComponent} from './pages/star-rating/star-rating.component';
 import {CoachProfileComponent} from './pages/coach-profile/coach-profile.component';
 import {RechargeComponent} from './pages/recharge/recharge.component';
 import {CoachListviewComponent} from './pages/coach-listview/coach-listview.component';
+import { BecomeCoachComponent } from './pages/become-coach/become-coach.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import {CoachListviewComponent} from './pages/coach-listview/coach-listview.comp
     StarRatingComponent,
     CoachProfileComponent,
     RechargeComponent,
-    CoachListviewComponent
+    CoachListviewComponent,
+    BecomeCoachComponent
   ],
   imports: [
     FormsModule,
@@ -123,6 +125,8 @@ import {CoachListviewComponent} from './pages/coach-listview/coach-listview.comp
       {path: 'coach-listitem', component: CoachListitemComponent, pathMatch: 'full'},
       {path: 'rechargement-gc', component: RechargeComponent, pathMatch: 'full'},
       {path: 'coach-listview', component: CoachListviewComponent, pathMatch: 'full'},
+      {path: 'coach-listview', component: CoachListviewComponent, pathMatch: 'full'},
+      {path: 'becomecoach', component: BecomeCoachComponent, pathMatch: 'full'},
 
     ])
   ],

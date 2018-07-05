@@ -4,7 +4,7 @@
       <img src="https://material.angular.io/assets/img/examples/shiba2.jpg">
     </div>
     <div class="col-4 coach-profile-infocoach">
-      <h2>{{curentCoach.username}}</h2>
+      <h2>{{currentCoach.coachInfos[0].username}}</h2>
       <app-star-rating class="coach-profile-starrating" rating="2"></app-star-rating>
       <span>180 h</span>
       <ul>
@@ -22,14 +22,8 @@
     <div class="col-12 coach-profile-content">
       <div class="row">
         <div class="col-9 coach-profile-content-desc">
-          <h3>About me</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sit amet enim neque. Donec eget libero
-            ac risus iaculis ultrices. Cras nec pellentesque velit. Donec lobortis, orci quis ornare finibus, ex ipsum
-            rhoncus tellus, vel vulputate lectus velit ut lorem. Nam imperdiet a nibh at tristique. Maecenas mattis
-            auctor augue eget congue. Nunc nisl orci, aliquet et lorem eu, auctor vestibulum turpis. Sed rutrum enim at
-            fringilla porta. Phasellus fringilla facilisis cursus. Cras accumsan lorem eu pharetra efficitur. Donec
-            eleifend pretium aliquam. Praesent iaculis, tellus aliquet tincidunt pulvinar, felis nulla vulputate augue,
-            vel ullamcorper eros velit efficitur eros.</p>
+          <h3>À propos</h3>
+          <p>{{currentCoach.coachInfos[0].description  ? currentCoach.coachInfos[0].description : "Aucune description"}}</p>
         </div>
         <div class="col-3 coach-profile-avis">
           <ul>

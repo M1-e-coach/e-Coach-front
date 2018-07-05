@@ -40,8 +40,13 @@ export class CoachProfileComponent implements OnInit {
   thumbLabel = true;
   value = 0;
   vertical = false;
-  curentCoach: any = {
-    username: ''
+  currentCoach: any = {
+    coachInfos: [
+      {
+        username: '',
+        description: '',
+      }
+    ]
   };
 
   infos;
@@ -71,9 +76,9 @@ export class CoachProfileComponent implements OnInit {
 
   constructor(private apiService: ApiService, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe((params: Params) => {
-      this.apiService.getUserById(params['id']).subscribe(coachData => {
+      this.apiService.getCoachById(params['id']).subscribe(coachData => {
         console.log(coachData);
-        this.curentCoach = coachData;
+        this.currentCoach = coachData;
         // userIcon = 'https://material.angular.io/assets/img/examples/shiba1.jpg';
         // nbHeures = 105;
         // age = 25;

@@ -57,7 +57,11 @@ export class UserComponent implements OnInit {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.apiService.getUserById(params['id']).subscribe(userData => {
         console.log(userData);
-        //this.username = userData.username;
+        this.username = userData.username;
+        this.age = userData.age;
+        this.pays = userData.pays;
+        this.lang = userData.langue;
+        this.divers = userData.divers;
         // userIcon = 'https://material.angular.io/assets/img/examples/shiba1.jpg';
         // nbHeures = 105;
         // age = 25;
@@ -72,6 +76,16 @@ export class UserComponent implements OnInit {
         username: ''
       };
     }
+  }
+
+  saveParametres() {
+    console.log(this.connectedUser.id)
+    this.apiService.putUserInfos(this.connectedUser.id, {
+      age: this.age,
+      pays: this.pays,
+      langue: this.lang,
+      divers: this.divers
+    });
   }
 
   ngOnInit() {

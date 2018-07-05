@@ -14,7 +14,22 @@ export class ApiService {
 
   getUserById(id) {
     return this.http.get(`${this.baseUrl}/users/${id}`);
+    // return this.http.get(`${this.baseUrl}/users/infos/${id}`);
   }
+
+  putUserInfos(id, data) {
+    console.log(data);
+    console.log(`${this.baseUrl}/users/infos/${id}`);
+    return this.http.put(`${this.baseUrl}/users/infos/${id}`, data).subscribe(response => {
+      console.log(response);
+    });
+    // return this.http.get(`${this.baseUrl}/users/infos/${id}`);
+  }
+
+  getCoachById(id) {
+    return this.http.get(`${this.baseUrl}/coachs/${id}`);
+  }
+
 
   getCoach() {
     return this.http.get(`${this.baseUrl}/coachs`);
@@ -29,6 +44,8 @@ export class ApiService {
 
   postLogin(user) {
     console.log(user);
-    return this.http.post(`${this.baseUrl}/login`, user);
+    return this.http.post(`${this.baseUrl}/login`, user).subscribe(data => {
+      console.log(data);
+    });
   }
 }

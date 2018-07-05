@@ -17,9 +17,9 @@
         <div class="row h-100 align-items-center">
           <mat-form-field class="header-select">
             <mat-select placeholder="Sélectionnez un jeu">
-              <mat-option routerLink="coach-listview/Overwatch" value="option1">Overwatch</mat-option>
-              <mat-option routerLink="coach-listview/CSGo" value="option2">Counter Strike Go</mat-option>
-              <mat-option routerLink="coach-listview/Fortnite" value="option3">Fortnite</mat-option>
+              <mat-option routerLink="coach-listview/overwatch" value="option1">Overwatch</mat-option>
+              <mat-option routerLink="coach-listview/csgo" value="option2">Counter Strike Go</mat-option>
+              <mat-option routerLink="coach-listview/fortnite" value="option3">Fortnite</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
@@ -46,6 +46,11 @@
               <div routerLink="/user/{{connectedUser.id}}" class="btn become-catch px-2">{{connectedUser.username}}
               </div>
               <div class="btn">{{connectedUser.nbCoin}} GC</div>
+              <div class="btn">
+                <i class="material-icons" (click)="logout()">
+                  exit_to_app
+                </i>
+              </div>
             </div>
           </div>
         </div>
@@ -200,6 +205,9 @@
         </button>
       </div>
       <div class="modal-body">
+        <div *ngIf="connError" class="alert alert-danger" role="alert">
+          Email ou mot de passe invalide
+        </div>
         <div class="group">
           <input matInput type="email" [(ngModel)]="email"/>
           <span class="highlight"></span>
