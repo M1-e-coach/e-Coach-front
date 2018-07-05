@@ -41,7 +41,9 @@ export class SiteHeaderComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
   username: string;
   password: string;
+  passwordConn: string;
   email: string;
+  emailConn: string;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object, private route: Router, private apiService: ApiService) {
     this.connectedUser = localStorage.getItem('connectedUser') && JSON.parse(localStorage.getItem('connectedUser'));
@@ -78,8 +80,8 @@ export class SiteHeaderComponent implements OnInit {
 
   connexion() {
     this.apiService.postLogin({
-      'email': this.email,
-      'password': this.password
+      'email': this.emailConn,
+      'password': this.passwordConn
     }).subscribe(data => {
       console.log(data);
       if (data !== 403) {

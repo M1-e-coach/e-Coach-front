@@ -30,6 +30,10 @@ export class ApiService {
     return this.http.get(`${this.baseUrl}/coachs/${id}`);
   }
 
+  getCoachByGame(jeu) {
+    return this.http.get(`${this.baseUrl}/coachs/jeu/${jeu}`);
+  }
+
 
   getCoach() {
     return this.http.get(`${this.baseUrl}/coachs`);
@@ -44,8 +48,6 @@ export class ApiService {
 
   postLogin(user) {
     console.log(user);
-    return this.http.post(`${this.baseUrl}/login`, user).subscribe(data => {
-      console.log(data);
-    });
+    return this.http.post(`${this.baseUrl}/login`, user);
   }
 }
