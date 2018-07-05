@@ -12,6 +12,10 @@ export class ApiService {
     return this.http.get(`${this.baseUrl}/users`);
   }
 
+  getUserById(id) {
+    return this.http.get(`${this.baseUrl}/users/${id}`);
+  }
+
   getCoach() {
     return this.http.get(`${this.baseUrl}/coachs`);
   }

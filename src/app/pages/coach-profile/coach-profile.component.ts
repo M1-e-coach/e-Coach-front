@@ -6,8 +6,9 @@ import {
 } from 'angular-calendar';
 import {CustomEventTitleFormatter} from './../../services/custom-event-title-formatter.provider';
 import {CustomDateFormatter} from './../../services/custom-date-formatter.provider';
-declare var jquery:any;
-declare var $ :any;
+
+declare var jquery: any;
+declare var $: any;
 
 @Component({
   selector: 'app-coach-profile',
@@ -56,9 +57,9 @@ export class CoachProfileComponent implements OnInit {
 
   handleEvent(event) {
     console.log(event);
-    $("#calendarModal").modal({
+    $('#calendarModal').modal({
       keyboard: false,
-      });
+    });
     this.infos = event.title;
   }
 
@@ -67,5 +68,5 @@ export class CoachProfileComponent implements OnInit {
 
   ngOnInit() {
   }
-  
+
 }

@@ -43,18 +43,17 @@ export class SiteHeaderComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object, private route: Router, private apiService: ApiService) {
+    this.connectedUser = localStorage.getItem('connectedUser') && JSON.parse(localStorage.getItem('connectedUser'));
+    if (this.connectedUser !== null) {
+      this.isConnected = true;
+    }
   }
 
   username: string;
   password: string;
   email: string;
 
-  ngOnInit() {
-    this.connectedUser = localStorage.getItem('connectedUser') && JSON.parse(localStorage.getItem('connectedUser'));
-    if (this.connectedUser !== null) {
-      this.isConnected = true;
-    }
-  }
+  ngOnInit() {}
 
   select(item) {
     console.log(this.selection, item);

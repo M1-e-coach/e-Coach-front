@@ -17,9 +17,9 @@
         <div class="row h-100 align-items-center">
           <mat-form-field class="header-select">
             <mat-select placeholder="Sélectionnez un jeu">
-              <mat-option routerLink="coach-listitem/Overwatch" value="option1">Overwatch</mat-option>
-              <mat-option routerLink="coach-listitem/CSGo" value="option2">Counter Strike Go</mat-option>
-              <mat-option routerLink="coach-listitem/Fortnite" value="option3">Fortnite</mat-option>
+              <mat-option routerLink="coach-listview/Overwatch" value="option1">Overwatch</mat-option>
+              <mat-option routerLink="coach-listview/CSGo" value="option2">Counter Strike Go</mat-option>
+              <mat-option routerLink="coach-listview/Fortnite" value="option3">Fortnite</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
@@ -43,7 +43,9 @@
           </div>
           <div *ngIf="isConnected" class="col-auto">
             <div class="row m-0 h-100 align-items-center">
-              <div routerLink="/user" class="btn px-2">Mon profil : {{connectedUser.username}}</div>
+              <div routerLink="/user/{{connectedUser.id}}" class="btn become-catch px-2">{{connectedUser.username}}
+              </div>
+              <div class="btn">{{connectedUser.nbCoin}} GC</div>
             </div>
           </div>
         </div>
@@ -147,19 +149,19 @@
       </div>
       <div class="modal-body">
         <div class="inscription-form">
-          <div class="group">      
-            <input matInput type="text" [(ngModel)]="username" required />
+          <div class="group">
+            <input matInput type="text" [(ngModel)]="username" required/>
             <span class="highlight"></span>
             <span class="bar"></span>
             <label>Pseudo</label>
           </div>
-          <div class="group">      
+          <div class="group">
             <input matInput type="email" [(ngModel)]="email" required/>
             <span class="highlight"></span>
             <span class="bar"></span>
             <label>Email</label>
           </div>
-          <div class="group">      
+          <div class="group">
             <input matInput type="password" [(ngModel)]="password" required/>
             <span class="highlight"></span>
             <span class="bar"></span>
@@ -198,19 +200,19 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="group">      
+        <div class="group">
           <input matInput type="email" [(ngModel)]="email" required/>
           <span class="highlight"></span>
           <span class="bar"></span>
           <label>Email</label>
         </div>
-        <div class="group">      
-            <input matInput type="password" [(ngModel)]="password" required/>
-            <span class="highlight"></span>
-            <span class="bar"></span>
-            <label>Mot de passe</label>
-          </div>
-        
+        <div class="group">
+          <input matInput type="password" [(ngModel)]="password" required/>
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Mot de passe</label>
+        </div>
+
         <!--<form class="inscription-form">-->
         <!--<mat-form-field class="example-full-width col-12">-->
         <!--<input matInput placeholder="Email" value="">-->
