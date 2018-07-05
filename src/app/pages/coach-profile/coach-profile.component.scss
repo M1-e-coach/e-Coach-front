@@ -1,5 +1,9 @@
 @import "./../../../assets/scss/variables";
 
+.cliquable{
+  cursor: pointer;
+  outline: none !important;
+}
 .coach-profile-infos {
   margin-bottom: 15px;
   margin-top: 15px;
@@ -112,4 +116,78 @@
       list-style: none;
     }
   }
+}
+#calendarModal{
+  .carousel-indicators.ng-star-inserted, .carousel-control-next, .carousel-control-prev{display: none;}
+    .carousel-inner{
+      background-color: transparent !important;
+  }
+  .mat-accent .mat-slider-thumb, .mat-accent .mat-slider-thumb-label, .mat-accent .mat-slider-track-fill{
+    background-color: #ff9900;
+  }
+  #edge-touch-fix-material-select input.select-dropdown {
+    -ms-touch-action: none;
+  }
+  .modal-header{
+    button{
+      opacity: 1;
+      span{
+        color: #000;
+      }
+    }
+  }
+  .form-header{
+    background-color: #333;
+    color: #fff;
+  }
+  .form-body{
+    background-color: #bbb;
+    color: #fff;
+    font-weight: 600;
+    font-size: 20px;
+  }
+  .form-footer{
+    background-color: #333;
+    color: #fff;
+    font-size: 15px;
+    .row{
+      div:first-child{
+        border-right: 1px solid #fff;
+      }
+    }
+  }
+}
+.reservation-btn{
+  background-color: $primary;
+  color: #fff;
+  border: 1px solid transparent;
+  cursor: pointer;
+  outline: none !important;
+  padding: 5px 15px;
+}
+.carousel, .carousel-item, .carousel-inner{
+  outline: none !important;
+  outline-color: transparent;
+}
+@media (min-width: 768px){
+  #calendarModal{
+    .modal-dialog {
+      max-width: 760px;
+      margin: 1.75rem auto;
+    } 
+  }  
+}
+.coach-profile-avis::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(151, 151, 151, 0.1);
+	background-color: transparent;
+}
+.coach-profile-avis::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: transparent;
+}
+.coach-profile-avis::-webkit-scrollbar-thumb
+{
+	background-color: #ccc;
 }

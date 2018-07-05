@@ -1,7 +1,8 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import {CalendarModule} from 'angular-calendar';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
@@ -55,7 +56,8 @@ import {
 } from '@angular/material';
 import {CoachListitemComponent} from './pages/coach-listitem/coach-listitem.component';
 import {StarRatingComponent} from './pages/star-rating/star-rating.component';
-import {CoachProfileComponent} from './pages/coach-profile/coach-profile.component';$
+import {CoachProfileComponent} from './pages/coach-profile/coach-profile.component';
+import { RechargeComponent } from './pages/recharge/recharge.component';$
 
 @NgModule({
   declarations: [
@@ -68,7 +70,8 @@ import {CoachProfileComponent} from './pages/coach-profile/coach-profile.compone
     SiteFooterComponent,
     CoachListitemComponent,
     StarRatingComponent,
-    CoachProfileComponent
+    CoachProfileComponent,
+    RechargeComponent
   ],
   imports: [
     BrowserModule,
@@ -104,6 +107,7 @@ import {CoachProfileComponent} from './pages/coach-profile/coach-profile.compone
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
+    MDBBootstrapModule.forRoot(),
     CalendarModule.forRoot(),
     RouterModule.forRoot([
       {path: 'coach-profile', component: CoachProfileComponent, pathMatch: 'full'},
@@ -113,10 +117,12 @@ import {CoachProfileComponent} from './pages/coach-profile/coach-profile.compone
       {path: '', component: HomeComponent, pathMatch: 'full'},
       {path: 'coach-listitem/:id', component: CoachListitemComponent, pathMatch: 'full'},
       {path: 'coach-listitem', component: CoachListitemComponent, pathMatch: 'full'},
+      {path: 'rechargement-gc', component: RechargeComponent, pathMatch: 'full'},
     ])
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [ NO_ERRORS_SCHEMA ]
 })
 export class AppModule {
 }
