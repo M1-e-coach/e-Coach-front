@@ -1,4 +1,9 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ElementRef, Inject } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { StripeService, Elements, Element as StripeElement, ElementsOptions } from "ngx-stripe";
+
+declare var jquery: any;
+declare var $: any;
 
 @Component({
   selector: 'app-recharge',
@@ -7,6 +12,21 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class RechargeComponent implements OnInit {
+  elements: Elements;
+  card: StripeElement;
+  packname: string;
+  gc;
+  prix;
+  actualGC;
+   // optional parameters
+   elementsOptions: ElementsOptions = {
+    locale: 'fr'
+  };
+  stripe: any;
+  paymentRequest: any;
+  prButton: any;
+  stripeTest: FormGroup;
+  prixAPayer;
 
   packs = [
     {
@@ -46,9 +66,65 @@ export class RechargeComponent implements OnInit {
       'price': '50'
     }
   ]
-  constructor() { }
+  constructor(private fb: FormBuilder, private stripeService: StripeService) { }
 
   ngOnInit() {
+    this.stripeTest = this.fb.group({
+      name: ['', [Validators.required]]
+    });
+    this.stripeService.elements(this.elementsOptions)
+      .subscribe(elements => {
+        this.elements = elements;
+        // Only mount the element the first time
+        if (!this.card) {
+          this.card = this.elements.create('card', {
+            style: {
+              base: {
+                iconColor: '#666EE8',
+                color: '#31325F',
+                lineHeight: '40px',
+                fontWeight: 300,
+                fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+                fontSize: '18px',
+                '::placeholder': {
+                  color: '#CFD7E0'
+                }
+              }
+            } 
+          });
+          this.card.mount('#card-element');
+        }
+      });
   }
 
+  
+  buy(amount) {
+    let self = this;
+    console.log('')
+    const name = this.stripeTest.get('name').value;
+    this.stripeService
+      .createToken(this.card, { name },)
+      .subscribe(result => {
+        if (result.token) {
+          // Use the token to create a charge or a customer
+          // https://stripe.com/docs/charges
+        
+        } else if (result.error) {
+          // Error creating the token
+          console.log(result.error.message);
+        }
+      });
+  }
+  openAchatModal(pack){
+    $('#achatModal').modal({
+      keyboard: false,
+    });
+    this.packname = pack.name;
+    this.gc = pack.gc;
+    this.prix = pack.price;
+    this.prixAPayer = pack.price;
+  }
+ achatTermine(){
+
+ }
 }

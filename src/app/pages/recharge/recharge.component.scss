@@ -25,5 +25,14 @@ app-recharge{
             font-size: 20px;
             line-height: 20px;
         }
+        
     }
+    .reservation-btn{
+        background-color: #ff9900;
+        color: #fff;
+        border: 1px solid transparent;
+        cursor: pointer;
+        outline: none !important;
+        padding: 5px 15px;
+      }
 }

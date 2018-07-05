@@ -61,6 +61,8 @@ import {CoachProfileComponent} from './pages/coach-profile/coach-profile.compone
 import {RechargeComponent} from './pages/recharge/recharge.component';
 import {CoachListviewComponent} from './pages/coach-listview/coach-listview.component';
 
+import { NgxStripeModule } from 'ngx-stripe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -78,6 +80,7 @@ import {CoachListviewComponent} from './pages/coach-listview/coach-listview.comp
   ],
   imports: [
     FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     [BrowserAnimationsModule, HttpClientModule],
     MatAutocompleteModule,
@@ -113,6 +116,7 @@ import {CoachListviewComponent} from './pages/coach-listview/coach-listview.comp
     MatTooltipModule,
     MDBBootstrapModule.forRoot(),
     CalendarModule.forRoot(),
+    NgxStripeModule.forRoot('pk_test_gvLFVkXmpdm50s6CSiijr0LK'),
     RouterModule.forRoot([
       {path: '', component: HomeComponent, pathMatch: 'full'},
       {path: 'coach-profile/:id', component: CoachProfileComponent, pathMatch: 'full'},
