@@ -147,9 +147,24 @@
       </div>
       <div class="modal-body">
         <div class="inscription-form">
-          <input matInput type="text" placeholder="Pseudo" [(ngModel)]="username"/>
-          <input matInput type="email" placeholder="Email" [(ngModel)]="email"/>
-          <input matInput type="password" placeholder="Mot de passe" [(ngModel)]="password"/>
+          <div class="group">      
+            <input matInput type="text" [(ngModel)]="username" required />
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Pseudo</label>
+          </div>
+          <div class="group">      
+            <input matInput type="email" [(ngModel)]="email" required/>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Email</label>
+          </div>
+          <div class="group">      
+            <input matInput type="password" [(ngModel)]="password" required/>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Mot de passe</label>
+          </div>
           <!--<mat-form-field class="example-full-width col-12">-->
           <!--<input matInput type="text" placeholder="Pseudo" ([ngModel])="username" name="username">-->
           <!--</mat-form-field>-->
@@ -183,8 +198,19 @@
         </button>
       </div>
       <div class="modal-body">
-        <input matInput type="email" placeholder="Email" [(ngModel)]="email"/>
-        <input matInput type="password" placeholder="Mot de passe" [(ngModel)]="password"/>
+        <div class="group">      
+          <input matInput type="email" [(ngModel)]="email" required/>
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Email</label>
+        </div>
+        <div class="group">      
+            <input matInput type="password" [(ngModel)]="password" required/>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>Mot de passe</label>
+          </div>
+        
         <!--<form class="inscription-form">-->
           <!--<mat-form-field class="example-full-width col-12">-->
             <!--<input matInput placeholder="Email" value="">-->

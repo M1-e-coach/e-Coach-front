@@ -184,5 +184,70 @@ app-site-header{
   }
   .become-catch{background-color: #ff9900;}
   .menu-bar{cursor: pointer;}
+  /* form starting stylings ------------------------------- */
+  .group{ 
+    position:relative; 
+    margin:1.5em 0; 
+    input{
+      font-size:18px;
+      padding:0.625em  0.625em 0.625em 0.3125em;
+      display:block;
+      // width:18.75em;
+      border:none;
+      border-bottom:1px solid #333;
+    }
+    input:focus {
+      outline:none;
+    }
+    /* LABEL ======================================= */
+    label {
+      font-family:'Arial';
+      color:#999; 
+      font-size:18px;
+      font-weight:normal;
+      position:absolute;
+      pointer-events:none;
+      left:0.3125em;
+      top:0.625em;
+      transition:0.2s ease all; 
+      -moz-transition:0.2s ease all; 
+      -webkit-transition:0.2s ease all;
+    }
+
+    /* active state */
+    input:focus ~ label, input:valid ~ label 		{
+      top:-20px;
+      left: -2px;
+      font-size:14px;
+      color:#ff9900;
+    }
+
+    /* BOTTOM BARS ================================= */
+    .bar 	{
+      position:relative;
+      display:block;
+    }
+
+    .bar:before, .bar:after 	{
+      content:'';
+      height:2px; 
+      width:0;
+      bottom:1px; 
+      position:absolute;
+      background:#ff9900; 
+      transition:0.2s ease all; 
+      -moz-transition:0.2s ease all; 
+      -webkit-transition:0.2s ease all;
+    }
+    .bar:before {
+      left:50%;
+    }
+    .bar:after {
+      right:50%; 
+    }
+    /* active state */
+    input:focus ~ .bar:before, input:focus ~ .bar:after {
+      width:50%;
+    }
+  }
 }
-  
