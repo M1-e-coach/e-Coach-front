@@ -106,6 +106,10 @@ export class RechargeComponent implements OnInit {
           // Use the token to create a charge or a customer
           // https://stripe.com/docs/charges
           $('#carouselPaiement').carousel('next');
+          
+          console.log(localStorage.getItem('connectedUser'));
+          localStorage.setItem('connectedUser.nbCoin', amount);
+          console.log(localStorage.getItem('connectedUser'))
         } else if (result.error) {
           // Error creating the token
           console.log(result.error.message);

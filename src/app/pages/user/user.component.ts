@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ElementRef, ViewChild, AfterViewInit} from '@angular/core';
 import {
   CalendarEvent,
   DAYS_OF_WEEK,
@@ -8,6 +8,8 @@ import {CustomEventTitleFormatter} from './../../services/custom-event-title-for
 import {CustomDateFormatter} from './../../services/custom-date-formatter.provider';
 import {ApiService} from '../../services/api-service.service';
 import {Router, ActivatedRoute, Params} from '@angular/router';
+import { chart } from 'highcharts';
+import * as Highcharts from 'highcharts';
 
 @Component({
   selector: 'app-user',
@@ -25,10 +27,13 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
     ApiService
   ]
 })
-export class UserComponent implements OnInit {
+export class UserComponent implements OnInit, AfterViewInit {
+  @ViewChild('chartTarget') chartTarget: ElementRef;
+  chart: Highcharts.ChartObject;
   connectedUser: any = {
     'username': ''
   };
+  
   username = 'Pharaz';
   userIcon = 'https://material.angular.io/assets/img/examples/shiba1.jpg';
   nbHeures = 105;
@@ -55,7 +60,7 @@ export class UserComponent implements OnInit {
 
   constructor(private apiService: ApiService, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe((params: Params) => {
-      this.apiService.getUserById(params['id']).subscribe(userData => {
+      this.apiService.getUserById(params['id']).subscribe( (userData: User) => {
         console.log(userData);
         this.username = userData.username;
         this.age = userData.age;
@@ -90,5 +95,51 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
   }
+  ngAfterViewInit(){
+    const options: Highcharts.Options = {
+      title: {
+        text: 'Evolution de vos capacités par Séance'
+      },
+      xAxis: {
+        categories: ['séance 1', 'séance 2', 'séance 3', 'séance 4']
+      },
+      legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
+      },
+      series: [{
+        name: 'Précision',
+        data: [2, 4, 5, 7]
+      }, {
+        name: 'MindGame',
+        data: [1, 2, 5, 6]
+      }, {
+        name: 'Communication',
+        data: [3, 4, 5, 7]
+      }, {
+        name: 'Déplacements',
+        data: [2, 2, 5, 6]
+      }, {
+        name: 'Réflexes',
+        data: [4, 4, 5, 6]
+      }]
+    };
+  
+    this.chart = chart(this.chartTarget.nativeElement, options);
+  }
 
+  addSeries(){
+    this.chart.addSeries({
+      name:'Balram',
+      data:[2,3,7]
+    })    
+  }
+}
+export class User{
+  username: string;
+  age: any;
+  pays: string;
+  langue: string;
+  divers: string;
 }

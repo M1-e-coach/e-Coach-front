@@ -20,10 +20,13 @@ export class CoachListviewComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {
-      this.apiService.getCoachByGame(params['game']).subscribe(data => {
+      this.apiService.getCoachByGame(params['game']).subscribe((data: Coach) => {
         console.log(data);
         this.listCoach = data.CoachsByJeu;
       });
     });
   }
+}
+export class Coach{
+  CoachsByJeu: any;
 }
