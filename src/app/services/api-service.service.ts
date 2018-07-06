@@ -48,4 +48,11 @@ export class ApiService {
     console.log(user);
     return this.http.post(`${this.baseUrl}/login`, user);
   }
+
+  putGolcoin(id, amount, direction) {
+    return this.http.put(`${this.baseUrl}/coin/${id}`, {
+      amount: amount,
+      direction: direction
+    });
+  }
 }
