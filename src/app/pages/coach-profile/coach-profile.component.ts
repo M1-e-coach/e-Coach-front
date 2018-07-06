@@ -4,6 +4,7 @@ import {CustomEventTitleFormatter} from './../../services/custom-event-title-for
 import {CustomDateFormatter} from './../../services/custom-date-formatter.provider';
 import {ActivatedRoute, Params} from '@angular/router';
 import {ApiService} from '../../services/api-service.service';
+import {log} from "util";
 
 declare var jquery: any;
 declare var $: any;
@@ -214,7 +215,12 @@ export class CoachProfileComponent implements OnInit {
   programmes = [];
   infos;
   viewDate: Date = new Date();
-  events: CalendarEvent[] = [];
+  events: CalendarEvent[] = [{
+      title: 'Disponible',
+      start: new Date('2018-07-06T16:00:00'),
+      end: new Date('2018-07-06T18:00:00'),
+      cssClass: `1-2`
+  }];
   locale = 'fr';
 
   handleEvent(event) {
@@ -257,14 +263,19 @@ export class CoachProfileComponent implements OnInit {
         );
       });
       this.apiService.getEventCoach(params['id']).subscribe( (planningData: any) => {
+        console.log(planningData)
         planningData.forEach((item: any) => {
+          console.log(item)
           this.events.push({
             title: 'Disponible',
-            start: new Date(`${item.datedebut} ${item.heuredebut}`),
-            end: new Date(`${item.datefin} ${item.heurefin}`),
+            /*start: new Date(`${item.datedebut}T${item.heuredebut}`),
+            end: new Date(`${item.datefin}T${item.heurefin}`),*/
+            start: new Date('2018-07-06T16:00:00'),
+            end: new Date('2018-07-06T18:00:00'),
             cssClass: `${item.id}-2`
           });
         });
+          console.log(this.events);
       });
     });
 
@@ -287,6 +298,7 @@ export class CoachProfileComponent implements OnInit {
     this.deplacement = $event.value;
   }
   ngOnInit() {
+
   }
 
   depenserGC() {

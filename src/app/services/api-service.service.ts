@@ -68,6 +68,6 @@ export class ApiService {
   }
 
   getEventCoach(id) {
-    return this.http.get(`${this.baseUrl}/coach/panning/${id}`);
+    return this.http.get(`${this.baseUrl}/coach/planning/${id}`);
   }
 }
