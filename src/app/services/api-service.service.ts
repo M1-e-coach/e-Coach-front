@@ -54,4 +54,16 @@ export class ApiService {
       amount: amount,
     });
   }
+
+  reserveCommande(id, eventId, seanceSoloId, precision, mindgame, communication, deplacement, reflexe) {
+    return this.http.put(`${this.baseUrl}/commande/${id}`, {
+      eventId: eventId,
+      seanceSoloId: seanceSoloId,
+      precision: precision,
+      mindgame: mindgame,
+      communication: communication,
+      deplacement: deplacement,
+      reflexe: reflexe,
+    });
+  }
 }
