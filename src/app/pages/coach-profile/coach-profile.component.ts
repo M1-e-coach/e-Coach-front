@@ -210,7 +210,7 @@ export class CoachProfileComponent implements OnInit {
     {
       title: 'Click me',
       start: new Date('2018-07-04T16:00:00'),
-      end: new Date('2018-07-04T17:00:00')
+      end: new Date('2018-07-04T17:00:00'),
     },
     {
       title: 'Or click me',
@@ -269,5 +269,7 @@ export class CoachProfileComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  depenserGC(){
+    
+  }
 }

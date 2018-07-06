@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewEncapsulation, ElementRef, Inject} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {StripeService, Elements, Element as StripeElement, ElementsOptions} from 'ngx-stripe';
+import { ApiService } from '../../services/api-service.service';
 
 declare var jquery: any;
 declare var $: any;
@@ -9,6 +10,9 @@ declare var $: any;
   selector: 'app-recharge',
   templateUrl: './recharge.component.html',
   styleUrls: ['./recharge.component.scss'],
+  providers: [
+    ApiService
+  ],
   encapsulation: ViewEncapsulation.None
 })
 export class RechargeComponent implements OnInit {
@@ -68,7 +72,7 @@ export class RechargeComponent implements OnInit {
     }
   ];
 
-  constructor(private fb: FormBuilder, private stripeService: StripeService) {
+  constructor(private fb: FormBuilder, private stripeService: StripeService, private apiService: ApiService) {
   }
 
   ngOnInit() {
@@ -116,7 +120,10 @@ export class RechargeComponent implements OnInit {
           console.log(currentUser.nbCoin);
           currentUser.nbCoin = Number(currentUser.nbCoin) + Number(amount);
           localStorage.setItem('connectedUser', JSON.stringify(currentUser));
-          console.log(localStorage.getItem('connectedUser'))
+          console.log(localStorage.getItem('connectedUser'));
+          this.apiService.putGolcoin(currentUser.id, currentUser.nbCoin).subscribe( data => {
+            console.log(data);
+          });
           setTimeout(function(){ 
             window.location.href = '/'; }, 3000);
         } else if (result.error) {
