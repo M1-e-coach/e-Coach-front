@@ -27,6 +27,7 @@ declare var $: any;
 })
 export class CoachProfileComponent implements OnInit {
   initialPrecision = 0;
+  prixTotal;
   initialMindGame = 0;
   initialCom = 0;
   initialDeplacement = 0;
@@ -46,7 +47,7 @@ export class CoachProfileComponent implements OnInit {
         'nbCoin': 0,
         'image': '',
         'plain': '0',
-        'couthoraire': 0,
+        'couthoraire': 15,
         'description': '',
         'note': 0,
         'jeu': null,
@@ -208,14 +209,16 @@ export class CoachProfileComponent implements OnInit {
   viewDate: Date = new Date();
   events: CalendarEvent[] = [
     {
-      title: 'Click me',
+      title: 'Séance Mindgame',
       start: new Date('2018-07-04T16:00:00'),
       end: new Date('2018-07-04T17:00:00'),
+      cssClass: '2'
     },
     {
-      title: 'Or click me',
+      title: 'Séance Précision',
       start: new Date('2018-07-04T17:00:00'),
       end: new Date('2018-07-04T18:00:00'),
+      cssClass: '2'
     }
   ];
 
@@ -226,7 +229,9 @@ export class CoachProfileComponent implements OnInit {
     $('#calendarModal').modal({
       keyboard: false,
     });
+    console.log(this.currentCoach.coachInfos[0].couthoraire)
     this.infos = event.title;
+    this.prixTotal = event.cssClass*this.currentCoach.coachInfos[0].couthoraire;
   }
 
   constructor(private apiService: ApiService, private activatedRoute: ActivatedRoute) {
@@ -270,6 +275,16 @@ export class CoachProfileComponent implements OnInit {
   ngOnInit() {
   }
   depenserGC(){
-    
+    let currentUser = JSON.parse(localStorage.getItem('connectedUser'));
+      console.log(currentUser.nbCoin);
+      currentUser.nbCoin = Number(currentUser.nbCoin) - Number(this.prixTotal);
+      localStorage.setItem('connectedUser', JSON.stringify(currentUser));
+      console.log(localStorage.getItem('connectedUser'));
+      this.apiService.putGolcoin(currentUser.id, currentUser.nbCoin).subscribe( data => {
+        console.log(data);
+      });
+      setTimeout(function(){ 
+        window.location.href = '/user/'+ currentUser.id; }
+      , 3000);
   }
 }
