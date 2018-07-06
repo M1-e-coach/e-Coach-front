@@ -49,15 +49,9 @@ export class ApiService {
     return this.http.post(`${this.baseUrl}/login`, user);
   }
 
-  reserveCommande(id, eventId, seanceSoloId, precision, mindgame, communication, deplacement, reflexe) {
-    return this.http.put(`${this.baseUrl}/commande/${id}`, {
-      eventId: eventId,
-      seanceSoloId: seanceSoloId,
-      precision: precision,
-      mindgame: mindgame,
-      communication: communication,
-      deplacement: deplacement,
-      reflexe: reflexe,
+  putGolcoin(id, amount) {
+    return this.http.put(`${this.baseUrl}/coin/${id}`, {
+      amount: amount,
     });
   }
 
