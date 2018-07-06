@@ -235,41 +235,36 @@ export class CoachProfileComponent implements OnInit {
   }
 
   constructor(private apiService: ApiService, private activatedRoute: ActivatedRoute) {
-    // this.activatedRoute.params.subscribe((params: Params) => {
-    //   this.apiService.getCoachById(params['id']).subscribe(coachData => {
-    //     console.log(coachData);
-    //     this.currentCoach = coachData;
-    //     // userIcon = 'https://material.angular.io/assets/img/examples/shiba1.jpg';
-    //     // nbHeures = 105;
-    //     // age = 25;
-    //     // pays = 'France';
-    //     // lang = 'Fr';
-    //     // divers = 'Aucune idée';
-    //   });
-    // });
+    this.activatedRoute.params.subscribe((params: Params) => {
+      this.apiService.getCoachById(params['id']).subscribe(coachData => {
+        console.log(coachData);
+        this.currentCoach = coachData;
+          this.currentCoach.coachProgrammes.forEach(seance => {
+                  console.log(seance.programmeId);
+                  const searchProgramme = this.programmes.findIndex(item => {
+                      return item.programmeId === seance.programmeId;
+                  });
+                  console.log(searchProgramme);
+                  if (searchProgramme === -1) {
+                      this.programmes.push({
+                          programmeId: seance.programmeId,
+                          programmeNom: seance.programmeNom,
+                          programmeDescription: seance.programmeDescription,
+                          prgrammeCoin: seance.prgrammeCoin,
+                          programmeSemaine: 1,
+                          seances: [
+                              seance
+                          ]
+                      });
+                  } else {
+                      this.programmes[searchProgramme].seances.push(seance);
+                  }
+              }
+          );
+      });
+    });
 
-    this.currentCoach.coachProgrammes.forEach(seance => {
-        console.log(seance.programmeId);
-        const searchProgramme = this.programmes.findIndex(item => {
-          return item.programmeId === seance.programmeId;
-        });
-        console.log(searchProgramme);
-        if (searchProgramme === -1) {
-          this.programmes.push({
-            programmeId: seance.programmeId,
-            programmeNom: seance.programmeNom,
-            programmeDescription: 'test',
-            prgrammeCoin: 100,
-            programmeSemaine: 1,
-            seances: [
-              seance
-            ]
-          });
-        } else {
-          this.programmes[searchProgramme].seances.push(seance);
-        }
-      }
-    );
+
   }
 
   ngOnInit() {

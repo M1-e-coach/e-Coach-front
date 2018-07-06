@@ -62,6 +62,7 @@
       <div class="coach-profile-programbox">
         <h4 class="coach-profile-programbox-header">{{program.programmeNom}}</h4>
         <ul class="coach-profile-programbox-sections">
+          <P>{{program.programmeDescription}}</P>
           <li *ngFor="let seance of program.seances">
             <p>Section 1 : {{seance.seanceNom}}</p>
             <p>{{seance.seanceDescription}}</p>
