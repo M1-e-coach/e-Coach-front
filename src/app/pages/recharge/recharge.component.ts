@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewEncapsulation, ElementRef, Inject } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { StripeService, Elements, Element as StripeElement, ElementsOptions } from 'ngx-stripe';
+import {Component, OnInit, ViewEncapsulation, ElementRef, Inject} from '@angular/core';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {StripeService, Elements, Element as StripeElement, ElementsOptions} from 'ngx-stripe';
 
 declare var jquery: any;
 declare var $: any;
@@ -19,8 +19,8 @@ export class RechargeComponent implements OnInit {
   gc;
   prix;
   actualGC;
-   // optional parameters
-   elementsOptions: ElementsOptions = {
+  // optional parameters
+  elementsOptions: ElementsOptions = {
     locale: 'fr'
   };
   stripe: any;
@@ -31,43 +31,45 @@ export class RechargeComponent implements OnInit {
 
   packs = [
     {
-      'name' : 'XS',
+      'name': 'XS',
       'color': '#1faa00',
       'gc': '10',
       'price': '2'
     },
     {
-      'name' : 'SM',
+      'name': 'SM',
       'color': '#00bfa5',
       'gc': '30',
       'price': '5'
     },
     {
-      'name' : 'MD',
+      'name': 'MD',
       'color': '#2962ff',
       'gc': '100',
       'price': '15'
     },
     {
-      'name' : 'LG',
+      'name': 'LG',
       'color': '#aa00ff',
       'gc': '200',
       'price': '25'
     },
     {
-      'name' : 'XL',
+      'name': 'XL',
       'color': '#c51162',
       'gc': '300',
       'price': '30'
     },
     {
-      'name' : 'XXL',
+      'name': 'XXL',
       'color': '#d50000',
       'gc': '500',
       'price': '50'
     }
-  ]
-  constructor(private fb: FormBuilder, private stripeService: StripeService) { }
+  ];
+
+  constructor(private fb: FormBuilder, private stripeService: StripeService) {
+  }
 
   ngOnInit() {
     this.stripeTest = this.fb.group({
@@ -92,16 +94,18 @@ export class RechargeComponent implements OnInit {
                   color: '#aab7c4'
                 }
               }
-            }});
-        this.card.mount('#card-element');
+            }
+          });
+          this.card.mount('#card-element');
         }
       });
   }
+
   buy(amount) {
     console.log(amount)
     const name = this.stripeTest.get('name').value;
     this.stripeService
-      .createToken(this.card, { name }, )
+      .createToken(this.card, {name}, )
       .subscribe(result => {
         if (result.token) {
           // Use the token to create a charge or a customer
@@ -121,6 +125,7 @@ export class RechargeComponent implements OnInit {
         }
       });
   }
+
   openAchatModal(pack) {
     $('#achatModal').modal({
       keyboard: false,
@@ -130,7 +135,8 @@ export class RechargeComponent implements OnInit {
     this.prix = pack.price;
     this.prixAPayer = pack.price;
   }
- achatTermine(){
 
- }
+  achatTermine() {
+
+  }
 }
