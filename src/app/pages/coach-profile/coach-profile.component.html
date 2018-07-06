@@ -8,10 +8,10 @@
       <app-star-rating class="coach-profile-starrating" rating="2"></app-star-rating>
       <span>180 h</span>
       <ul>
-        <li>Poste : un poste</li>
-        <li>League : un poste</li>
-        <li>Serveur : un serveur</li>
-        <li>Autres : des autres infos</li>
+        <li>Age : {{currentCoach.coachInfos[0].age != 0 ? currentCoach.coachInfos[0].age : "Non renseigné"}}</li>
+        <li>Pays : {{currentCoach.coachInfos[0].pays != "" ? currentCoach.coachInfos[0].pays : "Non renseigné"}}</li>
+        <li>Langue : {{currentCoach.coachInfos[0].langue != "" ? currentCoach.coachInfos[0].langue : "Non renseigné"}}</li>
+        <li>Divers : {{currentCoach.coachInfos[0].divers != "" ? currentCoach.coachInfos[0].divers : "Non renseigné"}}</li>
       </ul>
     </div>
     <!--<div class="col-5 coach-profile-calendar">-->
@@ -58,28 +58,16 @@
     </div>
   </div>
   <div class="row coach-profile-program">
-    <div class="col-4">
+    <div *ngFor="let program of programmes" class="col-4">
       <div class="coach-profile-programbox">
-        <h4 class="coach-profile-programbox-header">Nom du programme</h4>
+        <h4 class="coach-profile-programbox-header">{{program.programmeNom}}</h4>
         <ul class="coach-profile-programbox-sections">
-          <li>Section 1 : name</li>
-          <li>Section 2 : name</li>
-          <li>Section 3 : name</li>
-          <li>Section 4 : name</li>
+          <li *ngFor="let seance of program.seances">
+            <p>Section 1 : {{seance.seanceNom}}</p>
+            <p>{{seance.seanceDescription}}</p>
+          </li>
         </ul>
-        <button class="coach-profile-programbox-footer">Reserver le programme</button>
-      </div>
-    </div>
-    <div class="col-4">
-      <div class="coach-profile-programbox">
-        <h4 class="coach-profile-programbox-header">Nom du programme</h4>
-        <ul class="coach-profile-programbox-sections">
-          <li>Section 1 : name</li>
-          <li>Section 2 : name</li>
-          <li>Section 3 : name</li>
-          <li>Section 4 : name</li>
-        </ul>
-        <button class="coach-profile-programbox-footer">Reserver le programme</button>
+        <button class="coach-profile-programbox-footer">{{program.prgrammeCoin}} Goldcoins</button>
       </div>
     </div>
   </div>

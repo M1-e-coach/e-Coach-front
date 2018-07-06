@@ -97,7 +97,6 @@ export class SiteHeaderComponent implements OnInit {
   }
 
   inscription() {
-    console.log('toto');
     /*this.variables.setName(this.username);
     this.variables.setPassword(this.password);
     this.variables.setEmail(this.email);
@@ -106,6 +105,9 @@ export class SiteHeaderComponent implements OnInit {
       'username': this.username,
       'email': this.email,
       'password': this.password
+    }).subscribe(data => {
+      console.log(data);
+      $('#modalInsc').modal('hide');
     });
   }
 }
