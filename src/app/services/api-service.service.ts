@@ -6,7 +6,7 @@ export class ApiService {
   constructor(private http: HttpClient) {
   }
 
-  baseUrl = 'http://164.132.225.166/web/app.php/api';
+  baseUrl = 'http://localhost:8000/api';
 
   getUsers() {
     return this.http.get(`${this.baseUrl}/users`);
