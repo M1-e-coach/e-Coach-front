@@ -15,6 +15,7 @@ export class RechargeComponent implements OnInit {
   elements: Elements;
   card: StripeElement;
   packname: string;
+  amountGC: number;
   gc;
   prix;
   actualGC;
@@ -97,7 +98,7 @@ export class RechargeComponent implements OnInit {
       });
   }
   buy(amount) {
-    console.log('')
+    console.log(amount)
     const name = this.stripeTest.get('name').value;
     this.stripeService
       .createToken(this.card, { name }, )
@@ -107,9 +108,13 @@ export class RechargeComponent implements OnInit {
           // https://stripe.com/docs/charges
           $('#carouselPaiement').carousel('next');
           
-          console.log(localStorage.getItem('connectedUser'));
-          localStorage.setItem('connectedUser.nbCoin', amount);
+          let currentUser = JSON.parse(localStorage.getItem('connectedUser'));
+          console.log(currentUser.nbCoin);
+          currentUser.nbCoin = Number(currentUser.nbCoin) + Number(amount);
+          localStorage.setItem('connectedUser', JSON.stringify(currentUser));
           console.log(localStorage.getItem('connectedUser'))
+          setTimeout(function(){ 
+            window.location.href = '/'; }, 3000);
         } else if (result.error) {
           // Error creating the token
           console.log(result.error.message);

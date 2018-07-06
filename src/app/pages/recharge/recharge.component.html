@@ -36,7 +36,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <mdb-carousel [isControls]="true" [interval]="50000000" id="carouselPaiement" #carouselPaiement [animation]="'slide'" class="mt-2 col-12 px-0">
+        <mdb-carousel [isControls]="true" [interval]="5000000000" id="carouselPaiement" #carouselPaiement [animation]="'slide'" class="mt-2 col-12 px-0">
           <mdb-slide class="row m-0 h-100 justify-content-center">
             <div class="row m-0">
               <div class="col-12">
@@ -44,7 +44,8 @@
                   <div class="col-12">
                     Vous allez commandez {{gc}} goldcoins pour {{prix}} euros.<br><br>
                     Paiement effectué avec Stripe<br><br>
-                    <form novalidate (ngSubmit)="buy(amount)" [formGroup]="stripeTest">
+                    <form novalidate (ngSubmit)="buy(gc)" [formGroup]="stripeTest">
+                        <input type="hidden" name="gc" [(ngModel)]="gc">
                       <input class="paiement-input" type="text" formControlName="name" placeholder="Nom sur la carte">
                       <div id="card-element" class="field"></div>
                       <button class="reservation-btn" type="submit">
@@ -60,11 +61,12 @@
             <div class="row m-0">
               <div class="col-12">
                 Merci pour votre achat de GoldCoins.<br>
-                Vous pouvez dès maintenant les utiliser pour réserver des cours.
+                Vous pouvez dès maintenant les utiliser pour réserver des cours.<br>
+                Vous allez être redirigé à l'accueil du site dans 3 secondes.
               </div>
               <div class="col-12">
                 <div class="row">
-                  <button class="reservation-btn" routerLink="/">Retour à l'accueil</button>
+                  <a class="reservation-btn" href="/">Retour à l'accueil</a>
                 </div>
               </div>
             </div>
