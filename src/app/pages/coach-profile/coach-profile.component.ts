@@ -207,20 +207,7 @@ export class CoachProfileComponent implements OnInit {
   programmes = [];
   infos;
   viewDate: Date = new Date();
-  events: CalendarEvent[] = [
-    {
-      title: 'Séance Mindgame',
-      start: new Date('2018-07-04T16:00:00'),
-      end: new Date('2018-07-04T17:00:00'),
-      cssClass: '2'
-    },
-    {
-      title: 'Séance Précision',
-      start: new Date('2018-07-04T17:00:00'),
-      end: new Date('2018-07-04T18:00:00'),
-      cssClass: '2'
-    }
-  ];
+  events: CalendarEvent[] = [];
 
   locale = 'fr';
 
@@ -229,9 +216,9 @@ export class CoachProfileComponent implements OnInit {
     $('#calendarModal').modal({
       keyboard: false,
     });
-    console.log(this.currentCoach.coachInfos[0].couthoraire)
+    console.log(this.currentCoach.coachInfos[0].couthoraire);
     this.infos = event.title;
-    this.prixTotal = event.cssClass*this.currentCoach.coachInfos[0].couthoraire;
+    this.prixTotal = event.cssClass * this.currentCoach.coachInfos[0].couthoraire;
   }
 
   constructor(private apiService: ApiService, private activatedRoute: ActivatedRoute) {
@@ -239,28 +226,38 @@ export class CoachProfileComponent implements OnInit {
       this.apiService.getCoachById(params['id']).subscribe(coachData => {
         console.log(coachData);
         this.currentCoach = coachData;
-          this.currentCoach.coachProgrammes.forEach(seance => {
-                  console.log(seance.programmeId);
-                  const searchProgramme = this.programmes.findIndex(item => {
-                      return item.programmeId === seance.programmeId;
-                  });
-                  console.log(searchProgramme);
-                  if (searchProgramme === -1) {
-                      this.programmes.push({
-                          programmeId: seance.programmeId,
-                          programmeNom: seance.programmeNom,
-                          programmeDescription: seance.programmeDescription,
-                          prgrammeCoin: seance.prgrammeCoin,
-                          programmeSemaine: 1,
-                          seances: [
-                              seance
-                          ]
-                      });
-                  } else {
-                      this.programmes[searchProgramme].seances.push(seance);
-                  }
-              }
-          );
+        this.currentCoach.coachProgrammes.forEach(seance => {
+            console.log(seance.programmeId);
+            const searchProgramme = this.programmes.findIndex(item => {
+              return item.programmeId === seance.programmeId;
+            });
+            console.log(searchProgramme);
+            if (searchProgramme === -1) {
+              this.programmes.push({
+                programmeId: seance.programmeId,
+                programmeNom: seance.programmeNom,
+                programmeDescription: seance.programmeDescription,
+                prgrammeCoin: seance.prgrammeCoin,
+                programmeSemaine: 1,
+                seances: [
+                  seance
+                ]
+              });
+            } else {
+              this.programmes[searchProgramme].seances.push(seance);
+            }
+          }
+        );
+      });
+      this.apiService.getEventCoach(params['id']).subscribe(planningData => {
+        planningData.forEach(item => {
+          this.events.push({
+            title: 'Disponible',
+            start: new Date(`${item.datedebut} ${item.heuredebut}`),
+            end: new Date(`${item.datefin} ${item.heurefin}`),
+            cssClass: `${item.id}-2`
+          });
+        });
       });
     });
 
@@ -269,17 +266,19 @@ export class CoachProfileComponent implements OnInit {
 
   ngOnInit() {
   }
-  depenserGC(){
-    let currentUser = JSON.parse(localStorage.getItem('connectedUser'));
-      console.log(currentUser.nbCoin);
-      currentUser.nbCoin = Number(currentUser.nbCoin) - Number(this.prixTotal);
-      localStorage.setItem('connectedUser', JSON.stringify(currentUser));
-      console.log(localStorage.getItem('connectedUser'));
-      this.apiService.putGolcoin(currentUser.id, currentUser.nbCoin).subscribe( data => {
-        console.log(data);
-      });
-      setTimeout(function(){ 
-        window.location.href = '/user/'+ currentUser.id; }
+
+  depenserGC() {
+    const currentUser = JSON.parse(localStorage.getItem('connectedUser'));
+    console.log(currentUser.nbCoin);
+    currentUser.nbCoin = Number(currentUser.nbCoin) - Number(this.prixTotal);
+    localStorage.setItem('connectedUser', JSON.stringify(currentUser));
+    console.log(localStorage.getItem('connectedUser'));
+    this.apiService.putGolcoin(currentUser.id, currentUser.nbCoin).subscribe(data => {
+      console.log(data);
+    });
+    setTimeout(function () {
+        window.location.href = '/user/' + currentUser.id;
+      }
       , 3000);
   }
 }

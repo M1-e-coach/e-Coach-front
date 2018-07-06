@@ -66,4 +66,8 @@ export class ApiService {
       reflexe: reflexe,
     });
   }
+
+  getEventCoach(id) {
+    return this.http.get(`${this.baseUrl}/coach/panning/${id}`);
+  }
 }
