@@ -114,17 +114,13 @@
                       <div class="row">
                         <div class="col-12 form-group">
                           <div class="row justify-content-center">
-                            <div class="col-12 text-center">Sélectionner nombres d'heures</div>
+                            <div class="col-12 text-center">Choisissez votre discipline</div>
                           </div>
                           <div class="row justify-content-center">
                             <div class="col-auto">
-                              <select id="choose-discipline">
-                                  <option value="" disabled selected>Choisir la discipline</option>
-                                  <option value="mindgame">Mindgame</option>
-                                  <option value="precision">Précision</option>
-                                  <option value="com">Communication</option>
-                                  <option value="deplacement">Déplacements</option>
-                                  <option value="reflexes">Réflexes</option>
+                              <select name="discipline" [(ngModel)]="selectedDiscipline" id="choose-discipline">
+                                  <option value="init" disabled selected>Choisir la discipline</option>
+                                  <option *ngFor="let seance of currentCoach.coachSeanceSolos" [value]="seance.id">{{seance.nom}}</option>
                               </select>
                             </div>
                           </div>
@@ -160,7 +156,7 @@
                     Précision :
                   </div>
                   <div class="col">
-                      <mat-slider class="prix-cursor py-0 col-12 p-0" #precision [disabled]="disabled"
+                      <mat-slider (change)="changePrecision($event)" class="prix-cursor py-0 col-12 p-0" #precision [disabled]="disabled"
                       [invert]="invert"
                       [max]="max"
                       [min]="min"
@@ -177,7 +173,7 @@
                     MindGame :
                   </div>
                   <div class="col">
-                      <mat-slider class="prix-cursor py-0 col-12 p-0" #mindgame [disabled]="disabled"
+                      <mat-slider (change)="changeMindgame($event)" class="prix-cursor py-0 col-12 p-0" #mindgame [disabled]="disabled"
                       [invert]="invert"
                       [max]="max"
                       [min]="min"
@@ -194,7 +190,7 @@
                       Communication :
                     </div>
                     <div class="col">
-                        <mat-slider class="prix-cursor py-0 col-12 p-0" #communication [disabled]="disabled"
+                        <mat-slider (change)="changeCom($event)" class="prix-cursor py-0 col-12 p-0" #communication [disabled]="disabled"
                         [invert]="invert"
                         [max]="max"
                         [min]="min"
@@ -211,7 +207,7 @@
                       Déplacements :
                     </div>
                     <div class="col">
-                        <mat-slider class="prix-cursor py-0 col-12 p-0" #deplacements [disabled]="disabled"
+                        <mat-slider (change)="changeDeplacement($event)" class="prix-cursor py-0 col-12 p-0" #deplacements [disabled]="disabled"
                         [invert]="invert"
                         [max]="max"
                         [min]="min"
@@ -228,7 +224,7 @@
                       Réflexes :
                     </div>
                     <div class="col">
-                        <mat-slider class="prix-cursor py-0 col-12 p-0" #reflexes [disabled]="disabled"
+                        <mat-slider (change)="changeReflexe($event)" class="prix-cursor py-0 col-12 p-0" #reflexes [disabled]="disabled"
                         [invert]="invert"
                         [max]="max"
                         [min]="min"
@@ -245,6 +241,16 @@
                   </div>
                 </div>
             </div>
+          </mdb-slide>
+          <mdb-slide class="row m-0 h-100 justify-content-center">
+              <div class="row m-0">
+                  <div class="col-12">
+                    Merci pour votre réservation de GoldCoins.<br>
+                    Votre coach vous contactera très rapidement.<br>
+                    Vous allez être redirigé sur votre profil dans 3 secondes.
+                  </div>
+                  
+                </div>
           </mdb-slide>
         </mdb-carousel>
       </div>

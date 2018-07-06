@@ -32,11 +32,18 @@ export class CoachProfileComponent implements OnInit {
   initialCom = 0;
   initialDeplacement = 0;
   initialReflexes = 0;
+  selectedDiscipline = 'init';
   autoTicks = false;
   disabled = false;
+  idEvent;
   invert = false;
   max = 10;
   min = 0;
+  prec;
+  com;
+  reflexe;
+  deplacement;
+  mindgame;
   showTicks = false;
   step = 0.5;
   thumbLabel = true;
@@ -212,13 +219,13 @@ export class CoachProfileComponent implements OnInit {
       title: 'Séance Mindgame',
       start: new Date('2018-07-04T16:00:00'),
       end: new Date('2018-07-04T17:00:00'),
-      cssClass: '2'
+      cssClass: '1-2'
     },
     {
       title: 'Séance Précision',
       start: new Date('2018-07-04T17:00:00'),
       end: new Date('2018-07-04T18:00:00'),
-      cssClass: '2'
+      cssClass: '1-2'
     }
   ];
 
@@ -231,7 +238,8 @@ export class CoachProfileComponent implements OnInit {
     });
     console.log(this.currentCoach.coachInfos[0].couthoraire)
     this.infos = event.title;
-    this.prixTotal = event.cssClass*this.currentCoach.coachInfos[0].couthoraire;
+    this.prixTotal = Number((event.cssClass.split('-')[1]))*this.currentCoach.coachInfos[0].couthoraire;
+    this.idEvent = Number((event.cssClass.split('-')[0]))
   }
 
   constructor(private apiService: ApiService, private activatedRoute: ActivatedRoute) {
@@ -267,19 +275,46 @@ export class CoachProfileComponent implements OnInit {
 
   }
 
+  changePrecision($event){
+    this.prec = $event.value;
+  }
+  changeMindgame($event){
+    this.mindgame = $event.value;
+  }
+  changeCom($event){
+    this.com = $event.value;
+  }
+  changeReflexe($event){
+    this.reflexe = $event.value;
+  }
+  changeDeplacement($event){
+    this.deplacement = $event.value;
+  }
   ngOnInit() {
   }
   depenserGC(){
     let currentUser = JSON.parse(localStorage.getItem('connectedUser'));
-      console.log(currentUser.nbCoin);
-      currentUser.nbCoin = Number(currentUser.nbCoin) - Number(this.prixTotal);
-      localStorage.setItem('connectedUser', JSON.stringify(currentUser));
-      console.log(localStorage.getItem('connectedUser'));
-      this.apiService.putGolcoin(currentUser.id, currentUser.nbCoin).subscribe( data => {
-        console.log(data);
-      });
-      setTimeout(function(){ 
-        window.location.href = '/user/'+ currentUser.id; }
-      , 3000);
+    console.log(currentUser.nbCoin);
+    currentUser.nbCoin = Number(currentUser.nbCoin) - Number(this.prixTotal);
+    localStorage.setItem('connectedUser', JSON.stringify(currentUser));
+    console.log(localStorage.getItem('connectedUser'));
+    this.apiService.putGolcoin(currentUser.id, currentUser.nbCoin).subscribe( data => {
+      console.log(data);
+    });
+    this.apiService.reserveCommande(
+        currentUser.id,
+        this.idEvent,
+        this.selectedDiscipline, 
+        this.prec, 
+        this.mindgame, 
+        this.com, 
+        this.deplacement, 
+        this.reflexe).subscribe( data => {
+      console.log(data);
+    })
+    
+    setTimeout(function(){ 
+      window.location.href = '/user/'+ currentUser.id; }
+    , 3000);
   }
 }
